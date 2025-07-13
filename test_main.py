@@ -86,6 +86,8 @@ def test():
     # print(result)
 
     ############# DB에 상승종목 저장 ###############
+    trading_upper.fetch_and_save_previous_upper_stocks()
+    trading_upper.fetch_and_save_previous_upper_limit_stocks()
     # trading_upper.select_stocks_to_buy()
 
     ############# buy logic fix ##################
@@ -98,10 +100,10 @@ def test():
     # print(available_cash)
 
     # ########### 매수 재시도 로직 수리 #################
-    origin_result = kis_api.daily_order_execution_inquiry('0000002775')
-    revise_result = kis_api.daily_order_execution_inquiry('0000002789')
-    print(json.dumps(origin_result, indent=2, ensure_ascii=False))
-    print(json.dumps(revise_result, indent=2, ensure_ascii=False))
+    # origin_result = kis_api.daily_order_execution_inquiry('0000002775')
+    # revise_result = kis_api.daily_order_execution_inquiry('0000002789')
+    # print(json.dumps(origin_result, indent=2, ensure_ascii=False))
+    # print(json.dumps(revise_result, indent=2, ensure_ascii=False))
 
     # ######### 과열 종목 확인 ##########
     # stock = kis_api.get_stock_price('035420')

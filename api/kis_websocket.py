@@ -75,7 +75,7 @@ class KISWebSocket:
     ##################################    매도 로직   #####################################
     ######################################################################################
 
-        async def sell_condition(self, recv_value, session_id, ticker, name, quantity, avg_price, target_date, trade_condition):
+    async def sell_condition(self, recv_value, session_id, ticker, name, quantity, avg_price, target_date, trade_condition):
         """
         매도 조건을 판단하고, 조건이 충족되면 매도 처리를 진행합니다.
         """

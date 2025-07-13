@@ -141,7 +141,39 @@ class DatabaseManager:
             ) ENGINE=InnoDB
         ''')
 
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS pykrx_upper_stocks (
+                `date` DATE,
+                ticker VARCHAR(20),
+                name VARCHAR(100),
+                closing_price DECIMAL(10,2),
+                fluctuation_rate DECIMAL(5,2),
+                PRIMARY KEY (`date`, ticker)
+            ) ENGINE=InnoDB
+        ''')
+
         self.conn.commit()
+
+    def save_pykrx_upper_stocks(self, stocks_data: List[Dict[str, Any]]):
+        """pykrx_upper_stocks 테이블에 데이터를 저장합니다."""
+        if not stocks_data:
+            logging.info("저장할 급등주 데이터가 없습니다.")
+            return
+        try:
+            self.cursor.executemany('''
+                INSERT INTO pykrx_upper_stocks (date, ticker, name, closing_price, fluctuation_rate)
+                VALUES (%(date)s, %(ticker)s, %(name)s, %(closing_price)s, %(fluctuation_rate)s)
+                ON DUPLICATE KEY UPDATE
+                    name = VALUES(name),
+                    closing_price = VALUES(closing_price),
+                    fluctuation_rate = VALUES(fluctuation_rate)
+            ''', stocks_data)
+            self.conn.commit()
+            logging.info(f"{len(stocks_data)}개의 급등주 정보가 pykrx_upper_stocks 테이블에 저장되었습니다.")
+        except mysql.connector.Error as e:
+            logging.error("pykrx_upper_stocks 저장 중 오류 발생: %s", e)
+            self.conn.rollback()
+            raise
 
     def save_token(self, token_type, access_token, expires_at):
         try:
