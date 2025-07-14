@@ -2,6 +2,10 @@ import pandas as pd
 from pykrx import stock
 from datetime import datetime, timedelta
 import time
+import logging
+from typing import List, Dict, Any
+from config.config import DB_CONFIG
+from database.db_manager_upper import DatabaseManager
 
 def find_daily_upper_stocks(start_date_str, end_date_str):
     """
@@ -64,13 +68,15 @@ def find_daily_upper_stocks(start_date_str, end_date_str):
                     stock_name = stock.get_market_ticker_name(ticker)
                     print(f"  - {stock_name}({ticker}): 등락률({row['등락률']:.2f}%), 전일종가({row['전일종가']}), 당일종가({row['종가']})")
                     stocks_to_save.append({
-                        '날짜': date_str, 
-                        '종목코드': ticker, 
-                        '종목명': stock_name, 
-                        '등락률': row['등락률'], 
-                        '전일종가': row['전일종가'], 
-                        '당일종가': row['종가']
+                        'date': current_date.strftime('%Y-%m-%d'),
+                        'ticker': ticker,
+                        'name': stock_name,
+                        'upper_rate': float(row['등락률']),
+                        'closing_price': float(row['종가'])
                     })
+
+                with DatabaseManager() as db:
+                    db.save_pykrx_upper_stocks(stocks_to_save)
             
             if not found_any:
                 print("17% 이상 상승한 종목 없음")
@@ -85,11 +91,21 @@ def find_daily_upper_stocks(start_date_str, end_date_str):
 
 
 if __name__ == "__main__":
+    # 로깅 설정
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler('upper_stocks.log')
+        ]
+    )
+    
     # 오늘 날짜와 일주일 전 날짜를 기본값으로 설정
     today = datetime.now()
     one_week_ago = today - timedelta(days=7)
     
-    start_date_default = one_week_ago.strftime("%Y%m%d")
-    end_date_default = today.strftime("%Y%m%d")
-    
+    start_date_default = "20250101"
+    end_date_default = "20250709"
+
     find_daily_upper_stocks(start_date_default, end_date_default)

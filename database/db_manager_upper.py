@@ -120,7 +120,7 @@ class DatabaseManager:
                 ticker VARCHAR(20),
                 name VARCHAR(100),
                 closing_price DECIMAL(10,2),
-                is_strong_momentum BOOLEAN DEFAULT FALSE
+                trade_condition VARCHAR(50) DEFAULT 'normal'
             ) ENGINE=InnoDB
         ''')
 
@@ -146,9 +146,32 @@ class DatabaseManager:
                 `date` DATE,
                 ticker VARCHAR(20),
                 name VARCHAR(100),
+                upper_rate DECIMAL(5,2),
                 closing_price DECIMAL(10,2),
-                fluctuation_rate DECIMAL(5,2),
                 PRIMARY KEY (`date`, ticker)
+            ) ENGINE=InnoDB
+        ''')
+
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS minute_prices (
+                high_rise_date DATE NOT NULL COMMENT '급등일',
+                ticker VARCHAR(20) NOT NULL COMMENT '종목 코드',
+                name VARCHAR(100) NOT NULL COMMENT '종목명',
+                datetime DATETIME NOT NULL COMMENT '분봉 시간',
+                price INT NOT NULL COMMENT '해당 분 종가',
+                PRIMARY KEY (ticker, datetime),
+                INDEX idx_ticker_high_rise_date (ticker, high_rise_date)
+            ) ENGINE=InnoDB COMMENT '종목별 분봉 데이터'
+        ''')
+        
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS selected_pykrx_upper_stocks (
+                no INT AUTO_INCREMENT PRIMARY KEY,
+                `date` DATE,
+                ticker VARCHAR(20),
+                name VARCHAR(100),
+                closing_price DECIMAL(10,2),
+                trade_condition VARCHAR(50) DEFAULT 'normal'
             ) ENGINE=InnoDB
         ''')
 
@@ -161,20 +184,112 @@ class DatabaseManager:
             return
         try:
             self.cursor.executemany('''
-                INSERT INTO pykrx_upper_stocks (date, ticker, name, closing_price, fluctuation_rate)
-                VALUES (%(date)s, %(ticker)s, %(name)s, %(closing_price)s, %(fluctuation_rate)s)
+                INSERT INTO pykrx_upper_stocks (date, ticker, name, upper_rate, closing_price)
+                VALUES (%(date)s, %(ticker)s, %(name)s, %(upper_rate)s, %(closing_price)s)
                 ON DUPLICATE KEY UPDATE
                     name = VALUES(name),
-                    closing_price = VALUES(closing_price),
-                    fluctuation_rate = VALUES(fluctuation_rate)
+                    upper_rate = VALUES(upper_rate),
+                    closing_price = VALUES(closing_price)
             ''', stocks_data)
             self.conn.commit()
-            logging.info(f"{len(stocks_data)}개의 급등주 정보가 pykrx_upper_stocks 테이블에 저장되었습니다.")
+            print(f"{len(stocks_data)}개의 급등주 정보가 pykrx_upper_stocks 테이블에 저장되었습니다.")
         except mysql.connector.Error as e:
             logging.error("pykrx_upper_stocks 저장 중 오류 발생: %s", e)
             self.conn.rollback()
             raise
 
+    def save_minute_prices(self, price_data: List[Dict[str, Any]]):
+        """minute_prices 테이블에 분봉 데이터를 저장합니다."""
+        if not price_data:
+            logging.info("저장할 분봉 데이터가 없습니다.")
+            return
+        try:
+            query = '''
+                INSERT INTO minute_prices (high_rise_date, ticker, name, datetime, price)
+                VALUES (%(high_rise_date)s, %(ticker)s, %(name)s, %(datetime)s, %(price)s)
+                ON DUPLICATE KEY UPDATE price = VALUES(price), name = VALUES(name)
+            '''
+            self.cursor.executemany(query, price_data)
+            self.conn.commit()
+            print(f"{len(price_data)}개의 분봉 데이터가 minute_prices 테이블에 저장되었습니다.")
+        except mysql.connector.Error as e:
+            logging.error("minute_prices 저장 중 오류 발생: %s", e)
+            self.conn.rollback()
+            raise
+
+    def get_pykrx_upper_stocks(self, start_date: str, end_date: str) -> List[Dict[str, Any]]:
+        """지정된 기간의 pykrx_upper_stocks 데이터를 조회합니다."""
+        try:
+            self.cursor.execute('''
+                SELECT `date`, ticker, name, closing_price
+                FROM pykrx_upper_stocks
+                WHERE `date` BETWEEN %s AND %s
+            ''', (start_date, end_date))
+            return self.cursor.fetchall()
+        except mysql.connector.Error as e:
+            logging.error("pykrx_upper_stocks 조회 중 오류 발생: %s", e)
+            raise
+
+    def get_selected_pykrx_upper_stocks(self, start_date: str, end_date: str) -> List[Dict[str, Any]]:
+        """지정된 기간의 selected_pykrx_upper_stocks 데이터를 조회합니다."""
+        try:
+            self.cursor.execute('''
+                SELECT `date`, ticker, name, closing_price
+                FROM selected_pykrx_upper_stocks
+                WHERE `date` BETWEEN %s AND %s
+            ''', (start_date, end_date))
+            return self.cursor.fetchall()
+        except mysql.connector.Error as e:
+            logging.error("selected_pykrx_upper_stocks 조회 중 오류 발생: %s", e)
+            raise
+
+    def get_pykrx_upper_stocks_by_date(self, date_str: str) -> List[Dict[str, Any]]:
+        """지정된 날짜의 pykrx_upper_stocks 데이터를 조회합니다."""
+        return self.get_pykrx_upper_stocks(date_str, date_str)
+
+    def save_selected_pykrx_upper_stocks(self, stocks_data: List[Dict[str, Any]]):
+        """선별된 급등주 정보를 selected_pykrx_upper_stocks 테이블에 저장합니다."""
+        if not stocks_data:
+            logging.info("저장할 선별된 급등주 데이터가 없습니다.")
+            return
+        try:
+            # 테이블의 모든 데이터를 삭제합니다.
+            self.clear_selected_pykrx_upper_stocks()
+
+            # trade_condition을 기준으로 정렬 ('strong_momentum'이 먼저 오도록)
+            sorted_stocks = sorted(stocks_data, key=lambda x: x.get('trade_condition') == 'strong_momentum', reverse=True)
+
+            insert_data = []
+            for stock in sorted_stocks:
+                insert_data.append((
+                    stock.get('date'),
+                    stock.get('ticker'),
+                    stock.get('name'),
+                    stock.get('closing_price'),
+                    stock.get('trade_condition')
+                ))
+
+            self.cursor.executemany('''
+                INSERT INTO selected_pykrx_upper_stocks (date, ticker, name, closing_price, trade_condition)
+                VALUES (%s, %s, %s, %s, %s)
+            ''', insert_data)
+            self.conn.commit()
+            logging.info(f"{len(stocks_data)}개의 선별된 급등주 정보가 selected_pykrx_upper_stocks 테이블에 저장되었습니다.")
+        except mysql.connector.Error as e:
+            logging.error("selected_pykrx_upper_stocks 저장 중 오류 발생: %s", e)
+            self.conn.rollback()
+            raise
+
+    def clear_selected_pykrx_upper_stocks(self):
+        """selected_pykrx_upper_stocks 테이블의 모든 데이터를 삭제합니다."""
+        try:
+            self.cursor.execute('DELETE FROM selected_pykrx_upper_stocks')
+            self.conn.commit()
+            logging.info("selected_pykrx_upper_stocks 테이블이 초기화되었습니다.")
+        except mysql.connector.Error as e:
+            logging.error("selected_pykrx_upper_stocks 테이블 초기화 중 오류: %s", e)
+            self.conn.rollback()
+            raise
     def save_token(self, token_type, access_token, expires_at):
         try:
             self.cursor.execute('''
@@ -388,13 +503,12 @@ class DatabaseManager:
             
             for index, stock in enumerate(sorted_stocks, start=1):
                 # stock 딕셔너리에서 trade_condition 값을 직접 가져옴
-                trade_cond = stock.get('trade_condition')
                 self.cursor.execute('''
                     INSERT INTO selected_upper_stocks 
                     (no, date, ticker, name, closing_price, trade_condition)
                     VALUES (%s, %s, %s, %s, %s, %s)
                 ''', (index, today.strftime('%Y-%m-%d'), stock.get('ticker'), stock.get('name'), 
-                    float(stock.get('closing_price')), trade_cond))
+                    float(stock.get('closing_price')), stock.get('trade_condition')))
             print("선별 종목 저장 완료")
             self.conn.commit()
             logging.info("Saved selected stocks successfully.")

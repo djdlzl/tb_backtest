@@ -142,6 +142,7 @@ class TradingUpper():
             if not ticker:
                 self.logger.warning(f"{stock} ticker 정보 누락, 건너뜁니다.")
                 continue
+            
             ### 조건1: 상승일 기준 10일 전까지 고가 20% 넘은 이력 여부 체크
             df = self.krx_api.get_OHLCV(stock.get('ticker'), UPPER_DAY_AGO_CHECK) # D+2일 8시55분에 실행이라 10일
             # 데이터프레임에서 최하단 2개 행을 제외

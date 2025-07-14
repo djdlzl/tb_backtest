@@ -22,7 +22,7 @@ class MinuteChartTest:
     """일별 분봉 조회 테스트를 위한 클래스"""
     
     @staticmethod
-    def get_minute_chart(ticker, base_date):
+    def get_minute_chart(ticker, base_time, base_date):
         """
         특정 일자의 분봉 데이터를 조회합니다.
         
@@ -50,7 +50,7 @@ class MinuteChartTest:
             "FID_ETC_CLS_CODE": "",       # 기타분류코드
             "FID_COND_MRKT_DIV_CODE": "J", # 시장분류코드 J:주식, ETF, ETN
             "FID_INPUT_ISCD": ticker,       # 종목코드
-            "FID_INPUT_HOUR_1": "130000",  # 조회일자 (YYYYMMDD)
+            "FID_INPUT_HOUR_1": base_time,  # 조회시간 (ex.13시00분분: 130000)
             "FID_INPUT_DATE_1": base_date,  # 조회일자 (YYYYMMDD)
             "FID_HOUR_CLS_CODE": "1",      # 시간분류코드(1:분, D:일, W:주, M:월, Y:년)
             "FID_PW_DATA_INCU_YN": "Y"     # 데이터 누적여부 (Y:누적, N:미누적)
