@@ -8,6 +8,7 @@ import asyncio
 from datetime import datetime, timedelta, date
 from database.db_manager_upper import DatabaseManager
 from utils.date_utils import DateUtils
+from typing import Optional
 from utils.slack_logger import SlackLogger
 from utils.trading_logger import TradingLogger
 from api.kis_api import KISApi
@@ -142,9 +143,10 @@ class TradingUpper():
             if not ticker:
                 self.logger.warning(f"{stock} ticker 정보 누락, 건너뜁니다.")
                 continue
-            
+
+
             ### 조건1: 상승일 기준 10일 전까지 고가 20% 넘은 이력 여부 체크
-            df = self.krx_api.get_OHLCV(stock.get('ticker'), UPPER_DAY_AGO_CHECK) # D+2일 8시55분에 실행이라 10일
+            df = self.krx_api.get_OHLCV(stock.get('ticker'), UPPER_DAY_AGO_CHECK, BUY_DAY_AGO_UPPER) # D+2일 8시55분에 실행이라 10일
             # 데이터프레임에서 최하단 2개 행을 제외
             filtered_df = df.iloc[:-2]
               # 종가 대비 다음날 고가의 등락률 계산
@@ -190,37 +192,24 @@ class TradingUpper():
             else:
                 result_possible = False
             
+            # 조건6: 강화된 모멘텀 확인 (D+1 수익률 10% 이상)
+            result_strong_momentum = self._check_strong_momentum(stock, df)
+
+            # 모든 매수 조건 충족 시 후보 목록에 추가
             print(stock.get('name'))
             print('조건1: 상승일 기준 10일 전까지 고가 20% 넘지 않은은 이력 여부 체크:',result_high_price)
             print('조건2: 상승일 고가 - 매수일 현재가 = -7.5% 체크:',result_decline)
             # print('조건3: 상승일 거래량 대비 다음날 거래량 20% 이상 체크:',result_volume)
             print('조건4: 상장일 이후 1년 체크:',result_lstg)
             print('조건5: 과열 종목 제외 체크:',result_possible)
-            # print('매매 확인을 위해 임시로 모든 조건 통과')
-
-            # if True:
-            # if result_high_price and result_decline and result_volume and result_lstg and result_possible:
-            # --- 💡 신규 로직: 강화된 모멘텀 식별 💡 ---
-            is_strong_momentum = False
-            if len(df) >= 3:
-                day_0_close = df['종가'].iloc[-3]
-                day_1_close = df['종가'].iloc[-2]
-                if day_0_close > 0:
-                    day_1_return = (day_1_close - day_0_close) / day_0_close
-                    if day_1_return >= 0.10:
-                        is_strong_momentum = True
-                    print(f"종목명: {stock.get('name')}, D+1 수익률: {day_1_return:.2%}, 강화된 모멘텀: {is_strong_momentum}")
-                else:
-                    print(f"종목명: {stock.get('name')}, D+0 종가가 0 이하여서 수익률 계산 불가")
-            else:
-                self.logger.warning(f"{stock.get('ticker')} OHLCV 데이터 부족 (3일 미만)으로 강화된 모멘텀 여부 확인 불가")
-
-            if result_high_price and result_decline and result_lstg and result_possible: # 볼륨 체크 임시 제외
-                if is_strong_momentum:
-                    stock['trade_condition'] = 'strong_momentum'
-                else:
-                    stock['trade_condition'] = 'normal'  # 기본 조건
-                print(f"################ 매수 후보 종목: {stock.get('ticker')}, 종목명: {stock.get('name')} (현재가: {current_price}, 상한가 당시 가격: {stock.get('closing_price')}), 거래 조건: {stock.get('trade_condition')}")
+            
+            
+            # if result_high_price and result_decline and result_lstg and result_possible and result_volume:
+            if result_high_price and result_decline and result_lstg and result_possible:
+                # 거래 조건 설정
+                stock['trade_condition'] = 'strong_momentum' if result_strong_momentum else 'normal'
+                
+                self.logger.info(f"[매수 후보 선정] 종목: {stock.get('name')}({stock.get('ticker')}), 조건: {stock.get('trade_condition')}")
                 selected_stocks.append(stock)
       
         # 선택된 종목을 selected_stocks 테이블에 저장
@@ -230,6 +219,25 @@ class TradingUpper():
         db.close()
         
         return selected_stocks
+
+    def _check_strong_momentum(self, stock: Dict, df: pd.DataFrame) -> bool:
+        """강화된 모멘텀 조건을 확인합니다 (D+1 수익률 10% 이상)."""
+        if len(df) < 3:
+            self.logger.warning(f"{stock.get('ticker')} OHLCV 데이터 부족 (3일 미만)으로 모멘텀 확인 불가")
+            return False
+
+        day_0_close = df['종가'].iloc[-3]
+        day_1_close = df['종가'].iloc[-2]
+
+        if day_0_close <= 0:
+            self.logger.warning(f"{stock.get('name')}, D+0 종가가 0 이하여서 수익률 계산 불가")
+            return False
+
+        day_1_return = (day_1_close - day_0_close) / day_0_close
+        is_strong = day_1_return >= 0.10
+
+        self.logger.info(f"[{stock.get('name')}] D+1 수익률: {day_1_return:.2%}, 강화된 모멘텀: {is_strong}")
+        return is_strong
 
 ######################################################################################
 ################################    삭제   ##########################################
@@ -577,7 +585,7 @@ class TradingUpper():
         print(f"[DEBUG] 세션: {session}")
         
         MAX_RETRY = 15  # 체결 지연 대응을 위한 재시도 횟수 대폭 증가
-        RETRY_DELAY = 5  # 대기 시간도 2초로 증가 (총 최대 30초 이상 대기)
+        RETRY_DELAY = 30  # 대기 시간도 2초로 증가 (총 최대 30초 이상 대기)
         try:
             with self.session_lock:
                 with DatabaseManager() as db:
@@ -711,7 +719,7 @@ class TradingUpper():
                                 loop = getattr(self, "_monitor_loop", None)
                                 if loop and not loop.is_closed():
                                     # 딕셔너리를 튜플로 변환 (main.py와 동일한 형식)
-                                    sessions_info = self.get_session_info_upper()
+                                    sessions_info = self.get_session_info_upper(session.get('ticker'))
                                     asyncio.run_coroutine_threadsafe(
                                         self.monitor_for_selling_upper(sessions_info),
                                         loop
@@ -746,7 +754,7 @@ class TradingUpper():
                                 loop = getattr(self, "_monitor_loop", None)
                                 if loop and not loop.is_closed():
                                     # 딕셔너리를 튜플로 변환 (main.py와 동일한 형식)
-                                    sessions_info = self.get_session_info_upper()
+                                    sessions_info = self.get_session_info_upper(session.get('ticker'))
                                     asyncio.run_coroutine_threadsafe(
                                         self.monitor_for_selling_upper(sessions_info),
                                         loop
@@ -885,7 +893,7 @@ class TradingUpper():
         # 거래량 비교
         diff_1_2, diff_2_3 = self.kis_api.compare_volumes(volumes)
         
-        if diff_1_2 > -80:
+        if diff_1_2 > -90:
             return True
         else:
             return False
@@ -1142,15 +1150,7 @@ class TradingUpper():
                         "종목이름": balance_data.get('prdt_name'),
                         "종목코드": ticker
                     })
-                    
-                    self.slack_logger.send_log(
-                        level="INFO",
-                        message="잔고 없음으로 세션 삭제",
-                        context={
-                            "세션ID": session_id,
-                            "종목코드": ticker,
-                        }
-                    )
+
                     # sell_condition에서 모니터링을 중단할 수 있도록 성공 상태(dict) 반환
                     return {"rt_cd": "0", "msg1": "잔고 없음 세션 삭제"}
                 
@@ -1202,65 +1202,65 @@ class TradingUpper():
                         if order_result.get('output', {}).get('ODNO') is not None:
                             break
                 
-                # 주문 완료 후 대기
-                time.sleep(SELL_WAIT)
+                        # 주문 완료 후 대기
+                        time.sleep(SELL_WAIT)
 
-                # 주문 완료 체크
-                unfilled_qty = self.order_complete_check(order_result)
-                self.logger.info(f"매도 주문 미체결 수량 확인", {"세션ID": session_id, "ticker": ticker, "unfilled": unfilled_qty})
+                        # 주문 완료 체크
+                        unfilled_qty = self.order_complete_check(order_result)
+                        self.logger.info(f"매도 주문 미체결 수량 확인", {"세션ID": session_id, "ticker": ticker, "unfilled": unfilled_qty})
 
-                ## 매도 성공. 매도 로직 종료
-                if unfilled_qty == 0:
-                    self.logger.info(f"매도 주문 전체 체결 완료", {"세션ID": session_id, "ticker": ticker})
-                    # 주문이 모두 체결되었으므로 세션을 DB에서 삭제
-                    self.delete_finished_session(session_id)
-                    # 슬랙 알림 전송
-                    self.slack_logger.send_log(
-                        level="INFO",
-                        message="매도 주문 전체 체결 및 세션 삭제",
-                        context={
-                            "세션ID": session_id,
-                            "종목코드": ticker
-                        }
-                    )
-                    return order_result
+                        ## 매도 성공. 매도 로직 종료
+                        if unfilled_qty == 0:
+                            self.logger.info(f"매도 주문 전체 체결 완료", {"세션ID": session_id, "ticker": ticker})
+                            # 주문이 모두 체결되었으므로 세션을 DB에서 삭제
+                            self.delete_finished_session(session_id)
+                            # 슬랙 알림 전송
+                            self.slack_logger.send_log(
+                                level="INFO",
+                                message="매도 주문 전체 체결 및 세션 삭제",
+                                context={
+                                    "세션ID": session_id,
+                                    "종목코드": ticker
+                                }
+                            )
+                            break
 
-                # 최초 주문번호(원주문번호)를 별도로 저장
-                original_order_no = order_result.get('output', {}).get('ODNO')
+                        # 최초 주문번호(원주문번호)를 별도로 저장
+                        original_order_no = order_result.get('output', {}).get('ODNO')
 
-                ## 미체결 시 주문 수정
-                TRY_COUNT = 0
-                while unfilled_qty > 0:
-                    self.logger.info(f"매도 미체결 주문 처리 시작", {"세션ID": session_id, "ticker": ticker, "unfilled": unfilled_qty})
-                    new_price, _ = self.kis_api.get_current_price(ticker)
-                    
-                    # 매도는 가격을 낮출수록 체결 확률 증가
-                    tick_size = self._get_tick_size(new_price)
-                    revised_price = new_price - (tick_size * 2)  # 두 틱 아래로 설정
-                    
-                    # 주문 수정 실행
-                    revised_result = self.kis_api.revise_order(
-                        original_order_no,
-                        unfilled_qty,
-                        revised_price
-                    )
-                    self.logger.info("revised_result", revised_result)
-                    # 수정된 주문번호로 체결 상태 확인
-                    unfilled_qty = self.order_complete_check(revised_result)
-                    self.logger.info(
-                        "after revise order_result / unfilled",
-                        {"revised_order_no": revised_result.get('output', {}).get('ODNO'),
-                         "unfilled": unfilled_qty}
-                    )
-                    # 다음 루프를 위한 최신 주문 결과 저장
-                    order_result = revised_result
-                    TRY_COUNT += 1
-                    time.sleep(SELL_WAIT)
+                        ## 미체결 시 주문 수정
+                        TRY_COUNT = 0
+                        while unfilled_qty > 0:
+                            self.logger.info(f"매도 미체결 주문 처리 시작", {"세션ID": session_id, "ticker": ticker, "unfilled": unfilled_qty})
+                            new_price, _ = self.kis_api.get_current_price(ticker)
+                            
+                            # 매도는 가격을 낮출수록 체결 확률 증가
+                            tick_size = self._get_tick_size(new_price)
+                            revised_price = new_price - (tick_size * 2)  # 두 틱 아래로 설정
+                            
+                            # 주문 수정 실행
+                            revised_result = self.kis_api.revise_order(
+                                original_order_no,
+                                unfilled_qty,
+                                revised_price
+                            )
+                            self.logger.info("revised_result", revised_result)
+                            # 수정된 주문번호로 체결 상태 확인
+                            unfilled_qty = self.order_complete_check(revised_result)
+                            self.logger.info(
+                                "after revise order_result / unfilled",
+                                {"revised_order_no": revised_result.get('output', {}).get('ODNO'),
+                                "unfilled": unfilled_qty}
+                            )
+                            # 다음 루프를 위한 최신 주문 결과 저장
+                            order_result = revised_result
+                            TRY_COUNT += 1
+                            time.sleep(SELL_WAIT)
 
-                    if TRY_COUNT > 5:
-                        error_msg = f"미체결 매도 주문 반복 실패: {ticker}, {TRY_COUNT}회 재시도"
-                        self.logger.error(error_msg, {"세션ID": session_id, "unfilled": unfilled_qty})
-                        raise Exception(error_msg)  # 명시적으로 예외 발생
+                            if TRY_COUNT > 5:
+                                error_msg = f"미체결 매도 주문 반복 실패: {ticker}, {TRY_COUNT}회 재시도"
+                                self.logger.error(error_msg, {"세션ID": session_id, "unfilled": unfilled_qty})
+                                raise Exception(error_msg)  # 명시적으로 예외 발생
 
                 # === 매도 완료 후 trade_history 저장 ===
                 MAX_RETRY = 5
@@ -1340,7 +1340,7 @@ class TradingUpper():
                                         "실제투자금액": new_spent_fund
                                     }
                                 )
-
+                        return order_result
                     except Exception as e:
                         print(f"[ERROR] update_session 예외: {e}")
                         self.slack_logger.send_log(
@@ -1382,7 +1382,7 @@ class TradingUpper():
                 self.kis_websocket = KISWebSocket(self.sell_order)
             complete = await self.kis_websocket.real_time_monitoring(sessions_info)
             if complete:
-                print("모니터링이 정상적으로 종료되었습니다.")
+                print("모니터링이 정상적으로 종료되었습니다. 종목:", sessions_info)
         except Exception as e:
             print(f"모니터링 오류: {e}")
             self.slack_logger.send_log(
@@ -1392,21 +1392,33 @@ class TradingUpper():
             )
             
 
-    def get_session_info_upper(self):
+    def get_session_info_upper(self, ticker: Optional[str] = None):
         """
-        매도 모니터링에 필요한 세션 정보 받아오기
+        매도 모니터링에 필요한 세션 정보를 받아옵니다.
+        ticker가 제공되면 해당 종목의 세션만, 아니면 전체 세션을 가져옵니다.
         """
         db = DatabaseManager()
-        sessions = db.load_trading_session_upper()
+        sessions = db.load_trading_session_upper(ticker=ticker)
         db.close()
         
         sessions_info = []
         for session in sessions:
-            #강제 매도 일자
-            target_date = self.date_utils.get_target_date(date.fromisoformat(str(session.get('start_date')).split()[0]), DAYS_LATER_UPPER)
-            trade_condition = session.get('trade_condition')
-            info_list = session.get('id'), session.get('ticker'), session.get('name'), session.get('quantity'), session.get('avr_price'), session.get('start_date'), target_date, trade_condition
+            # 강제 매도 일자
+            start_date_str = str(session.get('start_date')).split()[0]
+            start_date_obj = date.fromisoformat(start_date_str)
+            target_date = self.date_utils.get_target_date(start_date_obj, DAYS_LATER_UPPER)
+            
+            info_list = (
+                session.get('id'), 
+                session.get('ticker'), 
+                session.get('name'), 
+                session.get('quantity'), 
+                session.get('avr_price'), 
+                session.get('start_date'), 
+                target_date, 
+                session.get('trade_condition')
+            )
             sessions_info.append(info_list)
             
-        print("sessions_info 값: ",sessions_info)
+        print("sessions_info 결과: ", sessions_info)
         return sessions_info

@@ -81,13 +81,24 @@ def test():
     date_utils = DateUtils()
     db = DatabaseManager()
 
+
+    ############# 분봉 받아오기 ##################
+    fetch_time = "092000"
+    result = kis_api.get_minute_chart(ticker="900110", date="20250704", time=fetch_time)
+    json_result = json.dumps(result, indent=2, ensure_ascii=False)
+    filename = f"result-{fetch_time}.txt"
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(json_result)
+    print(f"결과가 {filename} 파일에 저장되었습니다.")
+
+
     ############# sell logic fix ##################
     # result = kis_api.balance_inquiry()
     # print(result)
 
     ############# DB에 상승종목 저장 ###############
-    trading_upper.fetch_and_save_previous_upper_stocks()
-    trading_upper.fetch_and_save_previous_upper_limit_stocks()
+    # trading_upper.fetch_and_save_previous_upper_stocks()
+    # trading_upper.fetch_and_save_previous_upper_limit_stocks()
     # trading_upper.select_stocks_to_buy()
 
     ############# buy logic fix ##################

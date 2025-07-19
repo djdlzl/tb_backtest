@@ -1,0 +1,9 @@
+[
+    {
+        "trade_session_id": 2120,
+        "ticker": "900260",
+        "name": "로스웰",
+        "buy_datetime": "2025-07-08T10:40:00",
+        "buy_price": 1022.0,
+        "sell_datetime": "2025-07-08T10:52:00",
+        "sell_price": 

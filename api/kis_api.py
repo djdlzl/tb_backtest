@@ -263,19 +263,18 @@ class KISApi:
         """
         분봉 데이터를 요청합니다. (inquire-time-dailychartprice)
         """
-        tr_id = "FHKST03010200"
+        tr_id = "FHKST03010230"
         self._set_headers(is_mock=False, tr_id=tr_id)
         
         url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-time-dailychartprice"
         
         params = {
-            "FID_ETC_CLS_CODE": "",
             "FID_COND_MRKT_DIV_CODE": "J",
             "FID_INPUT_ISCD": ticker,
             "FID_INPUT_HOUR_1": time,
             "FID_INPUT_DATE_1": date,
-            "FID_HOUR_CLS_CODE": "1",
-            "FID_PW_DATA_INCU_YN": "Y" 
+            "FID_PW_DATA_INCU_YN": "Y",
+            "FID_FAKE_TICK_INCU_YN": "N"
         }
         
         try:

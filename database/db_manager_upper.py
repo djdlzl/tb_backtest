@@ -1,17 +1,18 @@
-import mysql.connector
-from mysql.connector.cursor import MySQLCursor, MySQLCursorDict
+import mariadb
+from mariadb import Cursor as MariaDBCursor
+from mariadb.connections import Connection as MariaDBConnection
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from config.config import DB_CONFIG
 from config.condition import STRONG_MOMENTUM
 from utils.date_utils import DateUtils
-from typing import Any, Dict, List, Optional, Sequence, cast
+from typing import Any, Dict, List, Optional, Sequence, cast, Union
 from zoneinfo import ZoneInfo
 KST = ZoneInfo("Asia/Seoul")
 
 
 class DatabaseManager:
-    cursor: MySQLCursorDict
+    cursor: MariaDBCursor
 
     def __init__(self):
         """
@@ -22,8 +23,8 @@ class DatabaseManager:
         - password: 비밀번호
         - database: 데이터베이스명
         """
-        self.conn = mysql.connector.connect(**DB_CONFIG)
-        self.cursor = cast(MySQLCursorDict, self.conn.cursor(buffered=True, dictionary=True))
+        self.conn = mariadb.connect(**DB_CONFIG)
+        self.cursor = self.conn.cursor(dictionary=True)
         self._create_tables()
 
     def __enter__(self):
@@ -35,10 +36,10 @@ class DatabaseManager:
                 self.cursor.close()
             if self.conn:
                 # 연결 종료 전 커밋
-                if self.conn.is_connected():
+                if self.conn:
                     self.conn.commit()
                     self.conn.close()
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error(f"데이터베이스 종료 중 오류: {e}")
         finally:
             # 명시적으로 None으로 설정하여 참조 제거
@@ -52,19 +53,19 @@ class DatabaseManager:
         """
         try:
             # 연결이 없거나 끊겼으면 재연결
-            if self.conn is None or not self.conn.is_connected():
-                self.conn = mysql.connector.connect(**DB_CONFIG)
+            if self.conn is None:
+                self.conn = mariadb.connect(**DB_CONFIG)
             if self.cursor:
                 self.cursor.close()
-            self.cursor = cast(MySQLCursorDict, self.conn.cursor(buffered=True, dictionary=True))
-        except mysql.connector.Error as e:
+            self.cursor = self.conn.cursor(dictionary=True)
+        except mariadb.Error as e:
             logging.error(f"커서 재설정 오류: {e}")
             raise
 
     def _create_tables(self):
         """필요한 데이터베이스 테이블을 생성합니다."""
         # 커서가 None이거나 연결이 끊겼으면 재설정
-        if self.cursor is None or not self.conn.is_connected():
+        if self.cursor is None or not self.conn:
             self._reset_cursor()
         assert self.cursor is not None
         assert self.cursor is not None
@@ -130,37 +131,38 @@ class DatabaseManager:
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 trade_date DATE,
                 trade_time TIME,
-                ticker VARCHAR(20),
-                name VARCHAR(100),
-                buy_avg_price INT,
-                sell_price INT,
+                ticker VARCHAR(10),
+                name VARCHAR(50),
+                buy_avg_price FLOAT,
+                sell_price FLOAT,
                 quantity INT,
-                profit_amount INT,
-                profit_rate DECIMAL(7,2),
-                remaining_assets INT
+                profit_amount FLOAT,
+                profit_rate FLOAT,
+                remaining_assets FLOAT
             ) ENGINE=InnoDB
         ''')
 
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS pykrx_upper_stocks (
-                `date` DATE,
-                ticker VARCHAR(20),
-                name VARCHAR(100),
-                upper_rate DECIMAL(5,2),
-                closing_price DECIMAL(10,2),
-                PRIMARY KEY (`date`, ticker)
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                ticker VARCHAR(10) NOT NULL,
+                name VARCHAR(50) NOT NULL,
+                date DATE NOT NULL,
+                trade_condition VARCHAR(50),
+                UNIQUE KEY (ticker, date)
             ) ENGINE=InnoDB
         ''')
 
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS minute_prices (
+                trade_session_id INT NOT NULL COMMENT '거래 세션 ID (selected_pykrx_upper_stocks.no 참조)',
                 high_rise_date DATE NOT NULL COMMENT '급등일',
                 ticker VARCHAR(20) NOT NULL COMMENT '종목 코드',
                 name VARCHAR(100) NOT NULL COMMENT '종목명',
                 datetime DATETIME NOT NULL COMMENT '분봉 시간',
                 price INT NOT NULL COMMENT '해당 분 종가',
-                PRIMARY KEY (ticker, datetime),
-                INDEX idx_ticker_high_rise_date (ticker, high_rise_date)
+                PRIMARY KEY (trade_session_id, datetime),
+                INDEX idx_ticker_datetime (ticker, datetime)
             ) ENGINE=InnoDB COMMENT '종목별 분봉 데이터'
         ''')
         
@@ -178,23 +180,31 @@ class DatabaseManager:
         self.conn.commit()
 
     def save_pykrx_upper_stocks(self, stocks_data: List[Dict[str, Any]]):
-        """pykrx_upper_stocks 테이블에 데이터를 저장합니다."""
+        """MariaDB의 pykrx_upper_stocks 테이블에 데이터를 저장합니다."""
         if not stocks_data:
-            logging.info("저장할 급등주 데이터가 없습니다.")
             return
+
         try:
-            self.cursor.executemany('''
-                INSERT INTO pykrx_upper_stocks (date, ticker, name, upper_rate, closing_price)
-                VALUES (%(date)s, %(ticker)s, %(name)s, %(upper_rate)s, %(closing_price)s)
+            self._reset_cursor()
+            sql = """
+                INSERT INTO pykrx_upper_stocks (ticker, name, date, trade_condition)
+                VALUES (%s, %s, %s, %s)
                 ON DUPLICATE KEY UPDATE
                     name = VALUES(name),
-                    upper_rate = VALUES(upper_rate),
-                    closing_price = VALUES(closing_price)
-            ''', stocks_data)
+                    trade_condition = VALUES(trade_condition)
+            """
+            
+            data_to_insert = [
+                (stock['ticker'], stock['name'], stock['date'], stock.get('trade_condition'))
+                for stock in stocks_data
+            ]
+            
+            self.cursor.executemany(sql, data_to_insert)
             self.conn.commit()
-            print(f"{len(stocks_data)}개의 급등주 정보가 pykrx_upper_stocks 테이블에 저장되었습니다.")
-        except mysql.connector.Error as e:
-            logging.error("pykrx_upper_stocks 저장 중 오류 발생: %s", e)
+            logging.info(f"{len(data_to_insert)}개의 데이터가 pykrx_upper_stocks 테이블에 성공적으로 저장/업데이트되었습니다.")
+
+        except mariadb.Error as e:
+            logging.error(f"pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: {e}")
             self.conn.rollback()
             raise
 
@@ -203,18 +213,62 @@ class DatabaseManager:
         if not price_data:
             logging.info("저장할 분봉 데이터가 없습니다.")
             return
+
+        query = '''
+            INSERT INTO minute_prices (trade_session_id, high_rise_date, ticker, name, datetime, price)
+            VALUES (%(trade_session_id)s, %(high_rise_date)s, %(ticker)s, %(name)s, %(datetime)s, %(price)s)
+            ON DUPLICATE KEY UPDATE price = VALUES(price), name = VALUES(name)
+        '''
+        
+        batch_size = 10000  # 한 번에 처리할 데이터 수
+        total_data_count = len(price_data)
+        logging.info(f"총 {total_data_count}개의 분봉 데이터를 DB에 저장합니다...")
+
+        for i in range(0, total_data_count, batch_size):
+            batch_data = price_data[i:i + batch_size]
+            try:
+                # 각 배치마다 트랜잭션을 시작하고 커밋합니다.
+                self.cursor.execute("START TRANSACTION")
+                self.cursor.executemany(query, batch_data)
+                self.conn.commit()
+                logging.info(f"{i + len(batch_data)} / {total_data_count} 데이터 처리 완료...")
+            except mariadb.Error as e:
+                logging.error(f"minute_prices 저장 중 오류 발생: {e}")
+                try:
+                    self.conn.rollback()
+                except mariadb.Error as e_rb:
+                    logging.error(f"롤백 중 오류 발생: {e_rb}")
+                # 오류가 발생하면 전체 프로세스를 중단합니다.
+                raise
+
+        logging.info("분봉 데이터 저장 완료.")
+
+    def get_all_minute_prices_for_session(self, trade_session_id: int) -> List[Dict[str, Any]]:
+        """지정된 거래 세션 ID의 모든 분봉 데이터를 조회합니다."""
         try:
-            query = '''
-                INSERT INTO minute_prices (high_rise_date, ticker, name, datetime, price)
-                VALUES (%(high_rise_date)s, %(ticker)s, %(name)s, %(datetime)s, %(price)s)
-                ON DUPLICATE KEY UPDATE price = VALUES(price), name = VALUES(name)
-            '''
-            self.cursor.executemany(query, price_data)
-            self.conn.commit()
-            print(f"{len(price_data)}개의 분봉 데이터가 minute_prices 테이블에 저장되었습니다.")
-        except mysql.connector.Error as e:
-            logging.error("minute_prices 저장 중 오류 발생: %s", e)
-            self.conn.rollback()
+            self.cursor.execute('''
+                SELECT `datetime`, price
+                FROM minute_prices
+                WHERE trade_session_id = %s
+                ORDER BY `datetime` ASC
+            ''', (trade_session_id,))
+            return self.cursor.fetchall()
+        except mariadb.Error as e:
+            logging.error(f"trade_session_id={trade_session_id}에 대한 전체 분봉 데이터 조회 중 오류 발생: {e}")
+            raise
+
+    def get_minute_prices_after_datetime(self, trade_session_id: int, start_datetime: datetime) -> List[Dict[str, Any]]:
+        """지정된 거래 세션 ID와 시작 시간 이후의 분봉 데이터를 조회합니다."""
+        try:
+            self.cursor.execute('''
+                SELECT `datetime`, price
+                FROM minute_prices
+                WHERE trade_session_id = %s AND `datetime` >= %s
+                ORDER BY `datetime` ASC
+            ''', (trade_session_id, start_datetime))
+            return self.cursor.fetchall()
+        except mariadb.Error as e:
+            logging.error("분봉 데이터 조회 중 오류 발생: %s", e)
             raise
 
     def get_pykrx_upper_stocks(self, start_date: str, end_date: str) -> List[Dict[str, Any]]:
@@ -226,20 +280,25 @@ class DatabaseManager:
                 WHERE `date` BETWEEN %s AND %s
             ''', (start_date, end_date))
             return self.cursor.fetchall()
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("pykrx_upper_stocks 조회 중 오류 발생: %s", e)
             raise
 
-    def get_selected_pykrx_upper_stocks(self, start_date: str, end_date: str) -> List[Dict[str, Any]]:
-        """지정된 기간의 selected_pykrx_upper_stocks 데이터를 조회합니다."""
+    def get_selected_pykrx_upper_stocks(self, start_date: Optional[str] = None, end_date: Optional[str] = None) -> List[Dict[str, Any]]:
+        """지정된 기간 또는 전체 기간의 selected_pykrx_upper_stocks 데이터를 조회합니다."""
         try:
-            self.cursor.execute('''
-                SELECT `date`, ticker, name, closing_price
-                FROM selected_pykrx_upper_stocks
-                WHERE `date` BETWEEN %s AND %s
-            ''', (start_date, end_date))
+            query = '''
+                SELECT s.no as id, s.`date`, s.ticker, s.name, s.closing_price, s.trade_condition
+                FROM selected_pykrx_upper_stocks s
+            '''
+            params = []
+            if start_date and end_date:
+                query += ' WHERE s.`date` BETWEEN %s AND %s'
+                params.extend([start_date, end_date])
+            
+            self.cursor.execute(query, tuple(params))
             return self.cursor.fetchall()
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("selected_pykrx_upper_stocks 조회 중 오류 발생: %s", e)
             raise
 
@@ -275,7 +334,7 @@ class DatabaseManager:
             ''', insert_data)
             self.conn.commit()
             logging.info(f"{len(stocks_data)}개의 선별된 급등주 정보가 selected_pykrx_upper_stocks 테이블에 저장되었습니다.")
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("selected_pykrx_upper_stocks 저장 중 오류 발생: %s", e)
             self.conn.rollback()
             raise
@@ -286,10 +345,55 @@ class DatabaseManager:
             self.cursor.execute('DELETE FROM selected_pykrx_upper_stocks')
             self.conn.commit()
             logging.info("selected_pykrx_upper_stocks 테이블이 초기화되었습니다.")
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("selected_pykrx_upper_stocks 테이블 초기화 중 오류: %s", e)
             self.conn.rollback()
             raise
+
+    def get_selected_pykrx_upper_stocks_by_date_range(self, start_date, end_date):
+        """
+        지정된 날짜 범위 내에 매수일(급등일)이 포함되는 종목만 선택적으로 가져옵니다.
+        DB 쿼리에서 직접 날짜를 계산하고 필터링하여 효율성을 높입니다.
+        """
+        try:
+            self._reset_cursor()
+            # MariaDB는 주말/공휴일을 알지 못하므로, D+2, D+3, D+4, D+5 까지의 가능성을 모두 고려하여
+            # 백테스트 기간의 시작일보다 5일 전부터 데이터를 조회합니다.
+            query_start_date = start_date - timedelta(days=5)
+
+            query = """
+                SELECT no as id, `date`, ticker, name, closing_price, trade_condition
+                FROM selected_pykrx_upper_stocks
+                WHERE `date` BETWEEN %s AND %s
+                ORDER BY `date` ASC
+            """
+            # 전체 기간에 대해 우선 DB에서 데이터를 가져옵니다.
+            self.cursor.execute(query, (start_date, end_date))
+            all_stocks = self.cursor.fetchall()
+
+            if not all_stocks:
+                logging.info("선별된 급등주 데이터가 없습니다.")
+                return []
+
+            filtered_stocks = []
+            for stock in all_stocks:
+                high_rise_date = stock['date']
+                # 매수 날짜는 급등일 + 2 영업일
+                buy_date = DateUtils.get_target_date(high_rise_date, later=0)
+                
+                # 계산된 매수 날짜가 백테스트 기간 내에 있는지 확인
+                if buy_date and start_date <= buy_date <= end_date:
+                    filtered_stocks.append(stock)
+            
+            logging.info(f"기간 필터링 후 {len(filtered_stocks)}개의 종목이 최종 선별되었습니다.")
+            return filtered_stocks
+
+        except mariadb.Error as e:
+            logging.error(f"선별된 급등주 데이터 조회 중 오류: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
+
     def save_token(self, token_type, access_token, expires_at):
         try:
             self.cursor.execute('''
@@ -300,13 +404,11 @@ class DatabaseManager:
                     expires_at = VALUES(expires_at)
             ''', (token_type, access_token, expires_at))
             self.conn.commit()
-        except mysql.connector.Error as e:
-            logging.error("Error saving token: %s", e)
+        except mariadb.Error as e:
+            logging.error("Error creating table: %s", e)
             raise
 
-#####################################################################################
-#####################################################################################
-#####################################################################################
+
 
     def get_token(self, token_type):
         try:
@@ -322,7 +424,7 @@ class DatabaseManager:
                     expires_at = expires_at.replace(tzinfo=KST)
                 return access_token, expires_at
             return None, None
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error retrieving token: %s", e)
             raise
 
@@ -337,7 +439,7 @@ class DatabaseManager:
             ''', (approval_type, approval_key, expires_at))
             self.conn.commit()
             logging.info("Approval saved successfully: %s", approval_type)
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error saving approval: %s", e)
             raise
 
@@ -349,11 +451,11 @@ class DatabaseManager:
             )
             result = self.cursor.fetchone()
             if result:
-                approval_key = result.get('access_token')
+                approval_key = result.get('approval_key')
                 expires_at = result.get('expires_at')
                 return approval_key, expires_at
             return None, None
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error retrieving approval: %s", e)
             raise
 
@@ -370,7 +472,7 @@ class DatabaseManager:
                 ORDER BY date, name
             ''', (start_date, end_date))
             return self.cursor.fetchall()
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error retrieving upper stocks: %s", e)
             raise
 
@@ -388,7 +490,7 @@ class DatabaseManager:
                 ''', (date, ticker, name, float(closing_price), float(upper_rate)))
             self.conn.commit()
             logging.info("Saved upper stocks for date: %s", date)
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error saving upper stocks: %s", e)
             raise
 
@@ -406,7 +508,7 @@ class DatabaseManager:
                 ''', (date, ticker, name, float(closing_price), float(upper_rate)))
             self.conn.commit()
             logging.info("Saved upper limit stocks for date: %s", date)
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error saving upper limit stocks: %s", e)
             raise
 
@@ -423,7 +525,7 @@ class DatabaseManager:
             )
             self.conn.commit()
             logging.info("Deleted upper stocks for date: %s", date)
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error deleting upper stocks: %s", e)
             raise
 
@@ -435,7 +537,7 @@ class DatabaseManager:
             )
             self.conn.commit()
             logging.info("Deleted upper stocks before date: %s", date)
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error deleting old stocks: %s", e)
             raise
 
@@ -467,7 +569,7 @@ class DatabaseManager:
                     'trade_condition': result.get('trade_condition')
                 }
             return None
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error retrieving stock to trade: %s", e)
             return None
 
@@ -486,7 +588,7 @@ class DatabaseManager:
                 WHERE date = %s
             ''', (days_ago_str,))
             return self.cursor.fetchall()
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error retrieving stocks from days ago: %s", e)
             raise
 
@@ -512,7 +614,7 @@ class DatabaseManager:
             print("선별 종목 저장 완료")
             self.conn.commit()
             logging.info("Saved selected stocks successfully.")
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error saving selected stocks: %s", e)
             raise
 
@@ -521,7 +623,7 @@ class DatabaseManager:
             self.cursor.execute('DELETE FROM selected_upper_stocks')
             self.conn.commit()
             logging.info("Deleted all records from selected_upper_stocks table.")
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error deleting selected stocks: %s", e)
             raise
 
@@ -534,7 +636,7 @@ class DatabaseManager:
             self.conn.commit()
             logging.info("Deleted stock with no: %d", no)
             self.reorder_selected_upper_stocks()
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error deleting selected stock: %s", e)
             raise
 
@@ -552,7 +654,7 @@ class DatabaseManager:
             
             self.conn.commit()
             logging.info("Reordered selected stocks successfully.")
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             self.conn.rollback()
             logging.error("Error reordering selected stocks: %s", e)
             raise
@@ -605,7 +707,7 @@ class DatabaseManager:
                 random_id, ticker, quantity, avr_price, is_strong_momentum
             )
             
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             self.conn.rollback()
             error_msg = f"DB 오류: {str(e)}"
             logging.error(error_msg)
@@ -631,7 +733,7 @@ class DatabaseManager:
                 
             return self.cursor.fetchall()
         
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error loading trading session: %s", e)
             raise
 
@@ -643,7 +745,7 @@ class DatabaseManager:
             self.cursor.execute('DELETE FROM trading_session_upper WHERE id = %s', (session_id,))
             self.conn.commit()
             logging.info("Session row deleted successfully")
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error deleting session row: %s", e)
             self.conn.rollback()
             raise
@@ -665,7 +767,7 @@ class DatabaseManager:
             else:
                 return None
             
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error getting session by ID: %s", e)
             raise
 
@@ -687,7 +789,7 @@ class DatabaseManager:
                 quantity, profit_amount, profit_rate, remaining_assets
             ))
             self.conn.commit()
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error saving trade history: %s", e)
             self.conn.rollback()
             raise
@@ -701,7 +803,7 @@ class DatabaseManager:
             )
             self.conn.commit()
             logging.info("Deleted upper limit stocks for date: %s", date)
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error deleting upper limit stocks: %s", e)
             raise
 
@@ -710,6 +812,6 @@ class DatabaseManager:
             self.cursor.execute('DELETE FROM selected_stocks')
             self.conn.commit()
             logging.info("Deleted all records from selected_stocks table.")
-        except mysql.connector.Error as e:
+        except mariadb.Error as e:
             logging.error("Error deleting selected stocks: %s", e)
             raise

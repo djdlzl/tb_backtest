@@ -1,0 +1,1280 @@
+백테스트를 시작합니다. 기간: 2025-06-01 ~ 2025-07-31
+Executing query with params: start_date=2025-06-01, end_date=2025-07-31
+Found 319 stocks in DB for the date range.
+  -> Stock 053580 on 2025-06-02 has valid buy_date 2025-06-05. Adding to list.
+  -> Stock 207760 on 2025-06-02 has valid buy_date 2025-06-05. Adding to list.
+  -> Stock 168330 on 2025-06-02 has valid buy_date 2025-06-05. Adding to list.
+  -> Stock 355390 on 2025-06-02 has valid buy_date 2025-06-05. Adding to list.
+  -> Stock 357580 on 2025-06-02 has valid buy_date 2025-06-05. Adding to list.
+  -> Stock 044490 on 2025-06-02 has valid buy_date 2025-06-05. Adding to list.
+  -> Stock 001270 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 036830 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 002220 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 032940 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 100790 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 001800 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 110020 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 402030 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 340810 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 369370 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 309960 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 304100 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 148780 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 294570 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 000880 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 052400 on 2025-06-04 has valid buy_date 2025-06-09. Adding to list.
+  -> Stock 014620 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 222800 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 294570 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 168330 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 124500 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 065060 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 072470 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 110020 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 052400 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 033340 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 026040 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 007110 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 052690 on 2025-06-05 has valid buy_date 2025-06-10. Adding to list.
+  -> Stock 053300 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 063080 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 064260 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 094480 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 168330 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 089150 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 205500 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 179530 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 318160 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 234340 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 246690 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 323410 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 36328K on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 377300 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 060370 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 026040 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 033640 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 005390 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 000885 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 000157 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 000145 on 2025-06-09 has valid buy_date 2025-06-11. Adding to list.
+  -> Stock 201490 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 179530 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 087010 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 123040 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 064260 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 272210 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 290690 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 300080 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 900110 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 900300 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 045510 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 041190 on 2025-06-10 has valid buy_date 2025-06-12. Adding to list.
+  -> Stock 061250 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 072520 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 076080 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 114450 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 142760 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 257720 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 179530 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 192250 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 323230 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 332570 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 417860 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 472850 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 900300 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 057680 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 043200 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 036000 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 009830 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 000885 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 124500 on 2025-06-11 has valid buy_date 2025-06-13. Adding to list.
+  -> Stock 950190 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 201490 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 130660 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 071460 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 065350 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 053350 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 052690 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 042940 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 003535 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 025980 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 010580 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 000950 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 000440 on 2025-06-12 has valid buy_date 2025-06-16. Adding to list.
+  -> Stock 024060 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 024740 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 053050 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 103140 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 117580 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 129920 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 152550 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 201490 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 465770 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 004090 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 000440 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 003280 on 2025-06-13 has valid buy_date 2025-06-17. Adding to list.
+  -> Stock 234340 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 032820 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 058450 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 950170 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 472850 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 347860 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 417860 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 286940 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 347850 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 272210 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 124500 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 260970 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 024060 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 018260 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 018000 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 010280 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 009780 on 2025-06-16 has valid buy_date 2025-06-18. Adding to list.
+  -> Stock 019170 on 2025-06-17 has valid buy_date 2025-06-19. Adding to list.
+  -> Stock 068330 on 2025-06-17 has valid buy_date 2025-06-19. Adding to list.
+  -> Stock 347860 on 2025-06-17 has valid buy_date 2025-06-19. Adding to list.
+  -> Stock 291810 on 2025-06-17 has valid buy_date 2025-06-19. Adding to list.
+  -> Stock 256940 on 2025-06-17 has valid buy_date 2025-06-19. Adding to list.
+  -> Stock 417860 on 2025-06-17 has valid buy_date 2025-06-19. Adding to list.
+  -> Stock 060250 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 083660 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 389030 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 148780 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 330860 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 158430 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 232830 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 265740 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 290660 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 340810 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 355390 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 413640 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 079950 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 035420 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 024720 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 019170 on 2025-06-18 has valid buy_date 2025-06-20. Adding to list.
+  -> Stock 041460 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 052710 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 105840 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 103140 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 201490 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 335810 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 408900 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 457550 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 429270 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 950160 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 046120 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 035510 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 025770 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 053690 on 2025-06-19 has valid buy_date 2025-06-23. Adding to list.
+  -> Stock 123690 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 158430 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 448710 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 377300 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 33626L on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 336260 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 33626K on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 288330 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 201490 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 214420 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 265740 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 204020 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 057680 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 027050 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 018700 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 035620 on 2025-06-20 has valid buy_date 2025-06-24. Adding to list.
+  -> Stock 024060 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 101730 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 108490 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 112040 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 123420 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 131100 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 152550 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 199430 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 205500 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 290660 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 357880 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 475150 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 090360 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 046120 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 288330 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 000440 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 010280 on 2025-06-23 has valid buy_date 2025-06-25. Adding to list.
+  -> Stock 160190 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 189690 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 418620 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 323410 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 293490 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 200230 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 203400 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 288330 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 267320 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 234100 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 234340 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 223310 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 214270 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 123840 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 015760 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 120110 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 042040 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 014990 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 006220 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 246720 on 2025-06-24 has valid buy_date 2025-06-26. Adding to list.
+  -> Stock 005690 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 063170 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 102370 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 200230 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 203400 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 099440 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 288330 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 313760 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 340930 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 080220 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 009070 on 2025-06-25 has valid buy_date 2025-06-27. Adding to list.
+  -> Stock 020760 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 024720 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 065650 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 083660 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 090710 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 203400 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 229000 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 263050 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 348350 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 039830 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 002020 on 2025-06-27 has valid buy_date 2025-07-01. Adding to list.
+  -> Stock 950210 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 092790 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 093240 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 096770 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 096775 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 192410 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 214270 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 36328K on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 263050 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 388610 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 039830 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 019170 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 008970 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 065650 on 2025-06-30 has valid buy_date 2025-07-02. Adding to list.
+  -> Stock 083660 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 065650 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 064260 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 032940 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 005740 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 376180 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 950210 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 288330 on 2025-07-01 has valid buy_date 2025-07-03. Adding to list.
+  -> Stock 005320 on 2025-07-02 has valid buy_date 2025-07-04. Adding to list.
+  -> Stock 011080 on 2025-07-02 has valid buy_date 2025-07-04. Adding to list.
+  -> Stock 037070 on 2025-07-02 has valid buy_date 2025-07-04. Adding to list.
+  -> Stock 042940 on 2025-07-02 has valid buy_date 2025-07-04. Adding to list.
+  -> Stock 270520 on 2025-07-02 has valid buy_date 2025-07-04. Adding to list.
+  -> Stock 308100 on 2025-07-02 has valid buy_date 2025-07-04. Adding to list.
+  -> Stock 900110 on 2025-07-02 has valid buy_date 2025-07-04. Adding to list.
+  -> Stock 217270 on 2025-07-03 has valid buy_date 2025-07-07. Adding to list.
+  -> Stock 340440 on 2025-07-03 has valid buy_date 2025-07-07. Adding to list.
+  -> Stock 089230 on 2025-07-03 has valid buy_date 2025-07-07. Adding to list.
+  -> Stock 051980 on 2025-07-03 has valid buy_date 2025-07-07. Adding to list.
+  -> Stock 038110 on 2025-07-03 has valid buy_date 2025-07-07. Adding to list.
+  -> Stock 014970 on 2025-07-03 has valid buy_date 2025-07-07. Adding to list.
+  -> Stock 131400 on 2025-07-03 has valid buy_date 2025-07-07. Adding to list.
+  -> Stock 900070 on 2025-07-04 has valid buy_date 2025-07-08. Adding to list.
+  -> Stock 201490 on 2025-07-04 has valid buy_date 2025-07-08. Adding to list.
+  -> Stock 037560 on 2025-07-04 has valid buy_date 2025-07-08. Adding to list.
+  -> Stock 900260 on 2025-07-04 has valid buy_date 2025-07-08. Adding to list.
+  -> Stock 249420 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 082640 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 069920 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 054920 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 048410 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 000230 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 187660 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 294570 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 215090 on 2025-07-07 has valid buy_date 2025-07-09. Adding to list.
+  -> Stock 065660 on 2025-07-08 has valid buy_date 2025-07-10. Adding to list.
+  -> Stock 008970 on 2025-07-08 has valid buy_date 2025-07-10. Adding to list.
+  -> Stock 001720 on 2025-07-08 has valid buy_date 2025-07-10. Adding to list.
+  -> Stock 069640 on 2025-07-08 has valid buy_date 2025-07-10. Adding to list.
+  -> Stock 115310 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 127120 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 117670 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 093520 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 065350 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 060250 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 050090 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 004990 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 004700 on 2025-07-09 has valid buy_date 2025-07-11. Adding to list.
+  -> Stock 096690 on 2025-07-10 has valid buy_date 2025-07-14. Adding to list.
+  -> Stock 313760 on 2025-07-10 has valid buy_date 2025-07-14. Adding to list.
+  -> Stock 015260 on 2025-07-10 has valid buy_date 2025-07-14. Adding to list.
+  -> Stock 000540 on 2025-07-10 has valid buy_date 2025-07-14. Adding to list.
+  -> Stock 006220 on 2025-07-10 has valid buy_date 2025-07-14. Adding to list.
+  -> Stock 263700 on 2025-07-11 has valid buy_date 2025-07-15. Adding to list.
+  -> Stock 307870 on 2025-07-11 has valid buy_date 2025-07-15. Adding to list.
+  -> Stock 317690 on 2025-07-14 has valid buy_date 2025-07-16. Adding to list.
+  -> Stock 203400 on 2025-07-14 has valid buy_date 2025-07-16. Adding to list.
+  -> Stock 200230 on 2025-07-14 has valid buy_date 2025-07-16. Adding to list.
+  -> Stock 123690 on 2025-07-14 has valid buy_date 2025-07-16. Adding to list.
+  -> Stock 036630 on 2025-07-14 has valid buy_date 2025-07-16. Adding to list.
+  -> Stock 452400 on 2025-07-14 has valid buy_date 2025-07-16. Adding to list.
+  -> Stock 004140 on 2025-07-15 has valid buy_date 2025-07-17. Adding to list.
+  -> Stock 087010 on 2025-07-15 has valid buy_date 2025-07-17. Adding to list.
+  -> Stock 290090 on 2025-07-15 has valid buy_date 2025-07-17. Adding to list.
+  -> Stock 308080 on 2025-07-15 has valid buy_date 2025-07-17. Adding to list.
+총 319개의 종목으로 백테스트를 진행합니다.
+Processing stock: 웹케시 (053580) on date: 2025-06-02
+  -> Calculated buy_date: 2025-06-05
+웹케시(053580, 5801): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미스터블루 (207760) on date: 2025-06-02
+  -> Calculated buy_date: 2025-06-05
+미스터블루(207760, 5802): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 내츄럴엔도텍 (168330) on date: 2025-06-02
+  -> Calculated buy_date: 2025-06-05
+내츄럴엔도텍(168330, 5803): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 크라우드웍스 (355390) on date: 2025-06-02
+  -> Calculated buy_date: 2025-06-05
+크라우드웍스(355390, 5804): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아모센스 (357580) on date: 2025-06-02
+  -> Calculated buy_date: 2025-06-05
+아모센스(357580, 5805): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 태웅 (044490) on date: 2025-06-02
+  -> Calculated buy_date: 2025-06-05
+태웅(044490, 5800): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 부국증권 (001270) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+부국증권(001270, 5807): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 솔브레인홀딩스 (036830) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+솔브레인홀딩스(036830, 5812): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한일철강 (002220) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+한일철강(002220, 5809): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 원익 (032940) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+원익(032940, 5810): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미래에셋벤처투자 (100790) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+미래에셋벤처투자(100790, 5813): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오리온홀딩스 (001800) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+오리온홀딩스(001800, 5808): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 전진바이오팜 (110020) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+전진바이오팜(110020, 5814): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코난테크놀로지 (402030) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+코난테크놀로지(402030, 5821): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 시선AI (340810) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+시선AI(340810, 5820): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 블리츠웨이엔터테인먼트 (369370) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+블리츠웨이엔터테인먼트(369370, 5819): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: LB인베스트먼트 (309960) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+LB인베스트먼트(309960, 5818): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 솔트룩스 (304100) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+솔트룩스(304100, 5817): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 비큐AI (148780) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+비큐AI(148780, 5816): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 쿠콘 (294570) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+쿠콘(294570, 5815): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한화 (000880) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+한화(000880, 5806): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코나아이 (052400) on date: 2025-06-04
+  -> Calculated buy_date: 2025-06-09
+코나아이(052400, 5811): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 성광벤드 (014620) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+성광벤드(014620, 5824): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 심텍 (222800) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+심텍(222800, 5834): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 쿠콘 (294570) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+쿠콘(294570, 5833): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 내츄럴엔도텍 (168330) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+내츄럴엔도텍(168330, 5832): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아이티센글로벌 (124500) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+아이티센글로벌(124500, 5831): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 지엔코 (065060) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+지엔코(065060, 5830): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 우리산업홀딩스 (072470) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+우리산업홀딩스(072470, 5828): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 전진바이오팜 (110020) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+전진바이오팜(110020, 5827): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코나아이 (052400) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+코나아이(052400, 5826): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 좋은사람들 (033340) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+좋은사람들(033340, 5825): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 제이에스티나 (026040) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+제이에스티나(026040, 5823): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 일신석재 (007110) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+일신석재(007110, 5822): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한전기술 (052690) on date: 2025-06-05
+  -> Calculated buy_date: 2025-06-10
+한전기술(052690, 5829): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국정보인증 (053300) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+한국정보인증(053300, 5842): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 컴투스홀딩스 (063080) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+컴투스홀딩스(063080, 5843): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 다날 (064260) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+다날(064260, 5844): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 갤럭시아머니트리 (094480) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+갤럭시아머니트리(094480, 5845): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 내츄럴엔도텍 (168330) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+내츄럴엔도텍(168330, 5846): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 케이씨티 (089150) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+케이씨티(089150, 5847): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 넥써쓰 (205500) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+넥써쓰(205500, 5848): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 애드바이오텍 (179530) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+애드바이오텍(179530, 5849): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 셀바이오휴먼텍 (318160) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+셀바이오휴먼텍(318160, 5850): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 헥토파이낸셜 (234340) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+헥토파이낸셜(234340, 5851): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: TS인베스트먼트 (246690) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+TS인베스트먼트(246690, 5852): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 카카오뱅크 (323410) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+카카오뱅크(323410, 5853): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 티와이홀딩스우 (36328K) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+티와이홀딩스우(36328K, 5854): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 카카오페이 (377300) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+카카오페이(377300, 5855): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: LS마린솔루션 (060370) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+LS마린솔루션(060370, 5841): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 제이에스티나 (026040) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+제이에스티나(026040, 5840): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 네패스 (033640) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+네패스(033640, 5839): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신성통상 (005390) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+신성통상(005390, 5838): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한화우 (000885) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+한화우(000885, 5837): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 두산2우B (000157) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+두산2우B(000157, 5836): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 하이트진로홀딩스우 (000145) on date: 2025-06-09
+  -> Calculated buy_date: 2025-06-11
+하이트진로홀딩스우(000145, 5835): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미투온 (201490) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+미투온(201490, 5862): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 애드바이오텍 (179530) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+애드바이오텍(179530, 5861): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 펩트론 (087010) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+펩트론(087010, 5859): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 엠에스오토텍 (123040) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+엠에스오토텍(123040, 5860): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 다날 (064260) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+다날(064260, 5858): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한화시스템 (272210) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+한화시스템(272210, 5863): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 소룩스 (290690) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+소룩스(290690, 5864): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 플리토 (300080) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+플리토(300080, 5865): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 이스트아시아홀딩스 (900110) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+이스트아시아홀딩스(900110, 5866): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오가닉티코스메틱 (900300) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+오가닉티코스메틱(900300, 5867): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 정원엔시스 (045510) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+정원엔시스(045510, 5857): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 우리기술투자 (041190) on date: 2025-06-10
+  -> Calculated buy_date: 2025-06-12
+우리기술투자(041190, 5856): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 화일약품 (061250) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+화일약품(061250, 5873): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 제넨바이오 (072520) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+제넨바이오(072520, 5874): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 웰크론한텍 (076080) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+웰크론한텍(076080, 5875): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 그린생명과학 (114450) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+그린생명과학(114450, 5876): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 모아라이프플러스 (142760) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+모아라이프플러스(142760, 5878): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 실리콘투 (257720) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+실리콘투(257720, 5879): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 애드바이오텍 (179530) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+애드바이오텍(179530, 5880): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 케이사인 (192250) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+케이사인(192250, 5881): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 엠에프엠코리아 (323230) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+엠에프엠코리아(323230, 5882): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: PS일렉트로닉스 (332570) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+PS일렉트로닉스(332570, 5883): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오브젠 (417860) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+오브젠(417860, 5884): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 폰드그룹 (472850) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+폰드그룹(472850, 5885): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오가닉티코스메틱 (900300) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+오가닉티코스메틱(900300, 5886): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 티사이언티픽 (057680) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+티사이언티픽(057680, 5872): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 파루 (043200) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+파루(043200, 5871): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 예림당 (036000) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+예림당(036000, 5870): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한화솔루션 (009830) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+한화솔루션(009830, 5869): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한화우 (000885) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+한화우(000885, 5868): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아이티센글로벌 (124500) on date: 2025-06-11
+  -> Calculated buy_date: 2025-06-13
+아이티센글로벌(124500, 5877): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 고스트스튜디오 (950190) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+고스트스튜디오(950190, 5899): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미투온 (201490) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+미투온(201490, 5898): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한전산업 (130660) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+한전산업(130660, 5897): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 위니아 (071460) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+위니아(071460, 5896): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신성델타테크 (065350) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+신성델타테크(065350, 5895): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 이니텍 (053350) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+이니텍(053350, 5894): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한전기술 (052690) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+한전기술(052690, 5893): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 상지건설 (042940) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+상지건설(042940, 5892): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한화투자증권우 (003535) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+한화투자증권우(003535, 5890): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아난티 (025980) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+아난티(025980, 5891): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에스엠벡셀 (010580) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+에스엠벡셀(010580, 5889): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 전방 (000950) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+전방(000950, 5888): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 중앙에너비스 (000440) on date: 2025-06-12
+  -> Calculated buy_date: 2025-06-16
+중앙에너비스(000440, 5887): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 흥구석유 (024060) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+흥구석유(024060, 5903): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한일단조 (024740) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+한일단조(024740, 5904): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 지에스이 (053050) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+지에스이(053050, 5905): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 풍산 (103140) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+풍산(103140, 5906): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 대성에너지 (117580) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+대성에너지(117580, 5907): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 대성하이텍 (129920) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+대성하이텍(129920, 5908): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국ANKOR유전 (152550) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+한국ANKOR유전(152550, 5909): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미투온 (201490) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+미투온(201490, 5910): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: STX그린로지스 (465770) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+STX그린로지스(465770, 5911): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국석유 (004090) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+한국석유(004090, 5902): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 중앙에너비스 (000440) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+중앙에너비스(000440, 5900): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 흥아해운 (003280) on date: 2025-06-13
+  -> Calculated buy_date: 2025-06-17
+흥아해운(003280, 5901): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 헥토파이낸셜 (234340) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+헥토파이낸셜(234340, 5919): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 우리기술 (032820) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+우리기술(032820, 5917): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한주에이알티 (058450) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+한주에이알티(058450, 5918): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: JTC (950170) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+JTC(950170, 5928): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 폰드그룹 (472850) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+폰드그룹(472850, 5927): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 알체라 (347860) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+알체라(347860, 5926): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오브젠 (417860) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+오브젠(417860, 5925): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 롯데이노베이트 (286940) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+롯데이노베이트(286940, 5924): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 디앤디파마텍 (347850) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+디앤디파마텍(347850, 5923): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한화시스템 (272210) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+한화시스템(272210, 5922): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아이티센글로벌 (124500) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+아이티센글로벌(124500, 5921): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에스앤디 (260970) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+에스앤디(260970, 5920): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 흥구석유 (024060) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+흥구석유(024060, 5916): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 삼성에스디에스 (018260) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+삼성에스디에스(018260, 5915): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 유니슨 (018000) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+유니슨(018000, 5914): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아이티센엔텍 (010280) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+아이티센엔텍(010280, 5913): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 엠에스씨 (009780) on date: 2025-06-16
+  -> Calculated buy_date: 2025-06-18
+엠에스씨(009780, 5912): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신풍제약 (019170) on date: 2025-06-17
+  -> Calculated buy_date: 2025-06-19
+신풍제약(019170, 5929): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 일신바이오 (068330) on date: 2025-06-17
+  -> Calculated buy_date: 2025-06-19
+일신바이오(068330, 5930): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 알체라 (347860) on date: 2025-06-17
+  -> Calculated buy_date: 2025-06-19
+알체라(347860, 5931): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 핀텔 (291810) on date: 2025-06-17
+  -> Calculated buy_date: 2025-06-19
+핀텔(291810, 5932): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 킵스파마 (256940) on date: 2025-06-17
+  -> Calculated buy_date: 2025-06-19
+킵스파마(256940, 5933): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오브젠 (417860) on date: 2025-06-17
+  -> Calculated buy_date: 2025-06-19
+오브젠(417860, 5934): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: NHN KCP (060250) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+NHN KCP(060250, 5940): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: CSA 코스믹 (083660) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+CSA 코스믹(083660, 5939): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 지니너스 (389030) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+지니너스(389030, 5950): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 비큐AI (148780) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+비큐AI(148780, 5941): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 네패스아크 (330860) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+네패스아크(330860, 5946): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아톤 (158430) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+아톤(158430, 5942): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아이티센피엔에스 (232830) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+아이티센피엔에스(232830, 5943): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 엔에프씨 (265740) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+엔에프씨(265740, 5944): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 네오펙트 (290660) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+네오펙트(290660, 5945): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 시선AI (340810) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+시선AI(340810, 5947): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 크라우드웍스 (355390) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+크라우드웍스(355390, 5948): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 비아이매트릭스 (413640) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+비아이매트릭스(413640, 5949): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 인베니아 (079950) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+인베니아(079950, 5938): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: NAVER (035420) on date: 2025-06-18
+  -> 종목 NAVER(035420)는 제외 목록에 있어 건너뜁니다.
+Processing stock: 콜마홀딩스 (024720) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+콜마홀딩스(024720, 5936): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신풍제약 (019170) on date: 2025-06-18
+  -> Calculated buy_date: 2025-06-20
+신풍제약(019170, 5935): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국전자인증 (041460) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+한국전자인증(041460, 5954): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아모텍 (052710) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+아모텍(052710, 5955): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 우진 (105840) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+우진(105840, 5956): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 풍산 (103140) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+풍산(103140, 5957): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미투온 (201490) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+미투온(201490, 5959): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 프리시젼바이오 (335810) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+프리시젼바이오(335810, 5960): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 스튜디오미르 (408900) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+스튜디오미르(408900, 5961): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 우진엔텍 (457550) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+우진엔텍(457550, 5962): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 시지트로닉스 (429270) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+시지트로닉스(429270, 5963): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코오롱티슈진 (950160) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+코오롱티슈진(950160, 5964): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오르비텍 (046120) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+오르비텍(046120, 5953): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신세계 I&C (035510) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+신세계 I&C(035510, 5952): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국정보통신 (025770) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+한국정보통신(025770, 5951): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한미글로벌 (053690) on date: 2025-06-19
+  -> Calculated buy_date: 2025-06-23
+한미글로벌(053690, 5958): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국화장품 (123690) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+한국화장품(123690, 5969): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아톤 (158430) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+아톤(158430, 5970): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코츠테크놀로지 (448710) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+코츠테크놀로지(448710, 5980): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 카카오페이 (377300) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+카카오페이(377300, 5979): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 두산퓨얼셀2우B (33626L) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+두산퓨얼셀2우B(33626L, 5978): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 두산퓨얼셀 (336260) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+두산퓨얼셀(336260, 5977): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 두산퓨얼셀1우 (33626K) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+두산퓨얼셀1우(33626K, 5976): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 브릿지바이오테라퓨틱스 (288330) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+브릿지바이오테라퓨틱스(288330, 5975): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미투온 (201490) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+미투온(201490, 5971): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 토니모리 (214420) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+토니모리(214420, 5974): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 엔에프씨 (265740) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+엔에프씨(265740, 5973): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 그리티 (204020) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+그리티(204020, 5972): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 티사이언티픽 (057680) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+티사이언티픽(057680, 5968): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코리아나 (027050) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+코리아나(027050, 5967): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 바른손 (018700) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+바른손(018700, 5966): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 바른손이앤에이 (035620) on date: 2025-06-20
+  -> Calculated buy_date: 2025-06-24
+바른손이앤에이(035620, 5965): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 흥구석유 (024060) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+흥구석유(024060, 5985): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 위메이드맥스 (101730) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+위메이드맥스(101730, 5986): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 로보티즈 (108490) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+로보티즈(108490, 5987): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 위메이드 (112040) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+위메이드(112040, 5988): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 위메이드플레이 (123420) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+위메이드플레이(123420, 5989): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 티엔엔터테인먼트 (131100) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+티엔엔터테인먼트(131100, 5990): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국ANKOR유전 (152550) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+한국ANKOR유전(152550, 5991): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 케이엔알시스템 (199430) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+케이엔알시스템(199430, 5992): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 넥써쓰 (205500) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+넥써쓰(205500, 5994): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 네오펙트 (290660) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+네오펙트(290660, 5995): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: SKAI (357880) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+SKAI(357880, 5996): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: SK이터닉스 (475150) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+SK이터닉스(475150, 5997): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 로보스타 (090360) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+로보스타(090360, 5984): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오르비텍 (046120) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+오르비텍(046120, 5983): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 브릿지바이오테라퓨틱스 (288330) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+브릿지바이오테라퓨틱스(288330, 5993): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 중앙에너비스 (000440) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+중앙에너비스(000440, 5981): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아이티센엔텍 (010280) on date: 2025-06-23
+  -> Calculated buy_date: 2025-06-25
+아이티센엔텍(010280, 5982): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 하이젠알앤엠 (160190) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+하이젠알앤엠(160190, 6004): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 포시에스 (189690) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+포시에스(189690, 6005): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: E8 (418620) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+E8(418620, 6017): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 카카오뱅크 (323410) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+카카오뱅크(323410, 6016): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 카카오게임즈 (293490) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+카카오게임즈(293490, 6015): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 텔콘RF제약 (200230) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+텔콘RF제약(200230, 6006): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에이비온 (203400) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+에이비온(203400, 6007): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 브릿지바이오테라퓨틱스 (288330) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+브릿지바이오테라퓨틱스(288330, 6014): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 나인테크 (267320) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+나인테크(267320, 6013): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 폴라리스세원 (234100) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+폴라리스세원(234100, 6012): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 헥토파이낸셜 (234340) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+헥토파이낸셜(234340, 6010): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 딥마인드 (223310) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+딥마인드(223310, 6009): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: FSN (214270) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+FSN(214270, 6008): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 뉴온 (123840) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+뉴온(123840, 6003): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국전력 (015760) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+한국전력(015760, 6002): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코오롱인더 (120110) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+코오롱인더(120110, 6001): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 케이피엠테크 (042040) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+케이피엠테크(042040, 6000): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 인디에프 (014990) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+인디에프(014990, 5999): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 제주은행 (006220) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+제주은행(006220, 5998): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 아스타 (246720) on date: 2025-06-24
+  -> Calculated buy_date: 2025-06-26
+아스타(246720, 6011): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 파미셀 (005690) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+파미셀(005690, 6019): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 서울옥션 (063170) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+서울옥션(063170, 6020): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 케이옥션 (102370) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+케이옥션(102370, 6023): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 텔콘RF제약 (200230) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+텔콘RF제약(200230, 6024): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에이비온 (203400) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+에이비온(203400, 6025): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 스맥 (099440) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+스맥(099440, 6022): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 브릿지바이오테라퓨틱스 (288330) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+브릿지바이오테라퓨틱스(288330, 6026): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 캐리 (313760) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+캐리(313760, 6027): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 유일에너테크 (340930) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+유일에너테크(340930, 6028): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 제주반도체 (080220) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+제주반도체(080220, 6021): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: KCTC (009070) on date: 2025-06-25
+  -> Calculated buy_date: 2025-06-27
+KCTC(009070, 6018): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 일진디스플 (020760) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+일진디스플(020760, 6030): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 콜마홀딩스 (024720) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+콜마홀딩스(024720, 6032): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 하이퍼코퍼레이션 (065650) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+하이퍼코퍼레이션(065650, 6033): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: CSA 코스믹 (083660) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+CSA 코스믹(083660, 6034): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 휴림로봇 (090710) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+휴림로봇(090710, 6035): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에이비온 (203400) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+에이비온(203400, 6036): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 젠큐릭스 (229000) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+젠큐릭스(229000, 6037): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 유틸렉스 (263050) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+유틸렉스(263050, 6038): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 위드텍 (348350) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+위드텍(348350, 6039): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오로라 (039830) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+오로라(039830, 6031): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 코오롱 (002020) on date: 2025-06-27
+  -> Calculated buy_date: 2025-07-01
+코오롱(002020, 6029): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 프레스티지바이오파마 (950210) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+프레스티지바이오파마(950210, 5691): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 넥스틸 (092790) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+넥스틸(092790, 6043): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 형지엘리트 (093240) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+형지엘리트(093240, 6044): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: SK이노베이션 (096770) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+SK이노베이션(096770, 6045): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: SK이노베이션우 (096775) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+SK이노베이션우(096775, 6046): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오늘이엔엠 (192410) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+오늘이엔엠(192410, 6047): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: FSN (214270) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+FSN(214270, 6048): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 티와이홀딩스우 (36328K) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+티와이홀딩스우(36328K, 6049): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 유틸렉스 (263050) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+유틸렉스(263050, 6050): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 지에프씨생명과학 (388610) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+지에프씨생명과학(388610, 6051): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 오로라 (039830) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+오로라(039830, 6042): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신풍제약 (019170) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+신풍제약(019170, 6041): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 동양철관 (008970) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+동양철관(008970, 6040): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 하이퍼코퍼레이션 (065650) on date: 2025-06-30
+  -> Calculated buy_date: 2025-07-02
+하이퍼코퍼레이션(065650, 5690): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: CSA 코스믹 (083660) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+CSA 코스믹(083660, 6056): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 하이퍼코퍼레이션 (065650) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+하이퍼코퍼레이션(065650, 6055): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 다날 (064260) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+다날(064260, 6054): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 원익 (032940) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+원익(032940, 6053): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 크라운해태홀딩스 (005740) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+크라운해태홀딩스(005740, 6052): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 피코그램 (376180) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+피코그램(376180, 6058): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 프레스티지바이오파마 (950210) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+프레스티지바이오파마(950210, 6059): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 브릿지바이오테라퓨틱스 (288330) on date: 2025-07-01
+  -> Calculated buy_date: 2025-07-03
+브릿지바이오테라퓨틱스(288330, 6057): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 온타이드 (005320) on date: 2025-07-02
+  -> Calculated buy_date: 2025-07-04
+온타이드(005320, 6060): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 형지I&C (011080) on date: 2025-07-02
+  -> Calculated buy_date: 2025-07-04
+형지I&C(011080, 6061): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 파세코 (037070) on date: 2025-07-02
+  -> Calculated buy_date: 2025-07-04
+파세코(037070, 6062): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 상지건설 (042940) on date: 2025-07-02
+  -> Calculated buy_date: 2025-07-04
+상지건설(042940, 6063): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 앱트뉴로사이언스 (270520) on date: 2025-07-02
+  -> Calculated buy_date: 2025-07-04
+앱트뉴로사이언스(270520, 6064): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 형지글로벌 (308100) on date: 2025-07-02
+  -> Calculated buy_date: 2025-07-04
+형지글로벌(308100, 6065): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 이스트아시아홀딩스 (900110) on date: 2025-07-02
+  -> Calculated buy_date: 2025-07-04
+이스트아시아홀딩스(900110, 5692): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 넵튠 (217270) on date: 2025-07-03
+  -> Calculated buy_date: 2025-07-07
+넵튠(217270, 6070): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 세림B&G (340440) on date: 2025-07-03
+  -> Calculated buy_date: 2025-07-07
+세림B&G(340440, 6071): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: THE E&M (089230) on date: 2025-07-03
+  -> Calculated buy_date: 2025-07-07
+THE E&M(089230, 6069): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 중앙첨단소재 (051980) on date: 2025-07-03
+  -> Calculated buy_date: 2025-07-07
+중앙첨단소재(051980, 6068): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에코플라스틱 (038110) on date: 2025-07-03
+  -> Calculated buy_date: 2025-07-07
+에코플라스틱(038110, 6067): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 삼륭물산 (014970) on date: 2025-07-03
+  -> Calculated buy_date: 2025-07-07
+삼륭물산(014970, 6066): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 이브이첨단소재 (131400) on date: 2025-07-03
+  -> Calculated buy_date: 2025-07-07
+이브이첨단소재(131400, 5693): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 글로벌에스엠 (900070) on date: 2025-07-04
+  -> Calculated buy_date: 2025-07-08
+글로벌에스엠(900070, 6074): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 미투온 (201490) on date: 2025-07-04
+  -> Calculated buy_date: 2025-07-08
+미투온(201490, 6073): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: LG헬로비전 (037560) on date: 2025-07-04
+  -> Calculated buy_date: 2025-07-08
+LG헬로비전(037560, 6072): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 로스웰 (900260) on date: 2025-07-04
+  -> Calculated buy_date: 2025-07-08
+로스웰(900260, 5694): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 일동제약 (249420) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+일동제약(249420, 6080): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 동양생명 (082640) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+동양생명(082640, 6079): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 엑시온그룹 (069920) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+엑시온그룹(069920, 6078): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한컴위드 (054920) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+한컴위드(054920, 6077): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 현대바이오 (048410) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+현대바이오(048410, 6076): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 일동홀딩스 (000230) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+일동홀딩스(000230, 6075): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 현대ADM (187660) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+현대ADM(187660, 5695): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 쿠콘 (294570) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+쿠콘(294570, 6082): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 솔디펜스 (215090) on date: 2025-07-07
+  -> Calculated buy_date: 2025-07-09
+솔디펜스(215090, 6081): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 안트로젠 (065660) on date: 2025-07-08
+  -> Calculated buy_date: 2025-07-10
+안트로젠(065660, 6084): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 동양철관 (008970) on date: 2025-07-08
+  -> Calculated buy_date: 2025-07-10
+동양철관(008970, 6083): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신영증권 (001720) on date: 2025-07-08
+  -> Calculated buy_date: 2025-07-10
+신영증권(001720, 5696): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한세엠케이 (069640) on date: 2025-07-08
+  -> Calculated buy_date: 2025-07-10
+한세엠케이(069640, 5697): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 인포바인 (115310) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+인포바인(115310, 6091): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 제이에스링크 (127120) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+제이에스링크(127120, 6093): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 알파칩스 (117670) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+알파칩스(117670, 6092): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 매커스 (093520) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+매커스(093520, 6090): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 신성델타테크 (065350) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+신성델타테크(065350, 6089): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: NHN KCP (060250) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+NHN KCP(060250, 6088): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 비케이홀딩스 (050090) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+비케이홀딩스(050090, 6087): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 롯데지주 (004990) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+롯데지주(004990, 6086): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 조광피혁 (004700) on date: 2025-07-09
+  -> Calculated buy_date: 2025-07-11
+조광피혁(004700, 6085): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에이루트 (096690) on date: 2025-07-10
+  -> Calculated buy_date: 2025-07-14
+에이루트(096690, 6097): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 캐리 (313760) on date: 2025-07-10
+  -> Calculated buy_date: 2025-07-14
+캐리(313760, 6098): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에이엔피 (015260) on date: 2025-07-10
+  -> Calculated buy_date: 2025-07-14
+에이엔피(015260, 6096): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 흥국화재 (000540) on date: 2025-07-10
+  -> Calculated buy_date: 2025-07-14
+흥국화재(000540, 6094): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 제주은행 (006220) on date: 2025-07-10
+  -> Calculated buy_date: 2025-07-14
+제주은행(006220, 6095): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 케어랩스 (263700) on date: 2025-07-11
+  -> Calculated buy_date: 2025-07-15
+케어랩스(263700, 5698): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 비투엔 (307870) on date: 2025-07-11
+  -> Calculated buy_date: 2025-07-15
+비투엔(307870, 6099): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 퀀타매트릭스 (317690) on date: 2025-07-14
+  -> Calculated buy_date: 2025-07-16
+퀀타매트릭스(317690, 6104): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 에이비온 (203400) on date: 2025-07-14
+  -> Calculated buy_date: 2025-07-16
+에이비온(203400, 6103): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 텔콘RF제약 (200230) on date: 2025-07-14
+  -> Calculated buy_date: 2025-07-16
+텔콘RF제약(200230, 6102): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 한국화장품 (123690) on date: 2025-07-14
+  -> Calculated buy_date: 2025-07-16
+한국화장품(123690, 6101): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 세종텔레콤 (036630) on date: 2025-07-14
+  -> Calculated buy_date: 2025-07-16
+세종텔레콤(036630, 6100): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 이닉스 (452400) on date: 2025-07-14
+  -> Calculated buy_date: 2025-07-16
+이닉스(452400, 5699): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 동방 (004140) on date: 2025-07-15
+  -> Calculated buy_date: 2025-07-17
+동방(004140, 6105): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 펩트론 (087010) on date: 2025-07-15
+  -> Calculated buy_date: 2025-07-17
+펩트론(087010, 6106): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 트윔 (290090) on date: 2025-07-15
+  -> Calculated buy_date: 2025-07-17
+트윔(290090, 6107): 분봉 데이터가 없어 건너뜁니다.
+Processing stock: 바이젠셀 (308080) on date: 2025-07-15
+  -> Calculated buy_date: 2025-07-17
+바이젠셀(308080, 6108): 분봉 데이터가 없어 건너뜁니다.
+분석할 거래 기록이 없습니다.

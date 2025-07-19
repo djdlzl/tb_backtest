@@ -1,6 +1,7 @@
 import logging
 from datetime import datetime, timedelta
 import pandas as pd
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from database.db_manager_upper import DatabaseManager
 from api.kis_api import KISApi
 from api.krx_api import KRXApi
@@ -16,38 +17,51 @@ class StockSelector:
         self.date_utils = DateUtils()
         self.trading_upper = TradingUpper()
 
-    def select_and_save_all_stocks(self, start_date_str):
+    def select_and_save_all_stocks(self, start_date_str, end_date_str):
         """
-        지정된 시작일 이후의 모든 급등주를 선별하여 DB에 저장합니다.
+        지정된 기간 동안의 모든 급등주를 선별하여 DB에 저장합니다.
         """
+        db = DatabaseManager()
         try:
-            end_date_str = datetime.now().strftime('%Y%m%d')
             print(f"{start_date_str}부터 {end_date_str}까지의 모든 급등주를 대상으로 선별을 시작합니다.")
 
-            with DatabaseManager() as db:
-                stocks_to_check = db.get_pykrx_upper_stocks(start_date_str, end_date_str)
+            stocks_to_check = db.get_pykrx_upper_stocks(start_date_str, end_date_str)
             
+            if not stocks_to_check:
+                print("선별 대상 종목이 없습니다.")
+                return []
+
             selected_stocks = []
             today_str = datetime.now().strftime('%Y%m%d')
 
-            for stock in stocks_to_check:
-                # 조건 확인 (오늘 날짜를 기준으로 전달)
-                result_possible, result_momentum = self.check_conditions(stock, today_str)
-                if result_possible:
-                    stock['trade_condition'] = 'strong_momentum' if result_momentum else 'normal'
-                    selected_stocks.append(stock)
-                    print(f"########## [선별 완료] {stock.get('date')} {stock.get('name')}({stock.get('ticker')}) - 조건: {stock['trade_condition']}")
+            with ThreadPoolExecutor(max_workers=10) as executor:
+                future_to_stock = {executor.submit(self.check_conditions, stock, today_str): stock for stock in stocks_to_check}
+                for future in as_completed(future_to_stock):
+                    stock = future_to_stock[future]
+                    try:
+                        result_possible, result_momentum, log_messages = future.result()
+                        for msg in log_messages:
+                            print(msg)
+
+                        if result_possible:
+                            stock['trade_condition'] = 'strong_momentum' if result_momentum else 'normal'
+                            selected_stocks.append(stock)
+                            print(f"########## [선별 완료] {stock.get('date')} {stock.get('name')}({stock.get('ticker')}) - 조건: {stock['trade_condition']}")
+                    except Exception as exc:
+                        print(f'{stock.get("name")} ({stock.get("ticker")}) 선별 중 오류 발생: {exc}')
             
             if selected_stocks:
-                with DatabaseManager() as db:
-                    db.save_selected_pykrx_upper_stocks(selected_stocks)
+                db.save_selected_pykrx_upper_stocks(selected_stocks)
+                print(f"\n총 {len(selected_stocks)}개의 종목을 선별하여 저장했습니다.")
             else:
                 print("선별된 종목이 없습니다.")
 
             return selected_stocks
-        except Exception as e:
-            logging.error(f"전체 종목 선별 및 저장 중 오류 발생: {e}")
+        except Exception:
+            logging.exception("전체 종목 선별 및 저장 중 오류가 발생했습니다.")
             return []
+        finally:
+            db.close()
 
     def check_conditions(self, stock, date_str):
         """
@@ -86,7 +100,7 @@ class StockSelector:
 
         # --- 💡 신규 로직: 강화된 모멘텀 식별 💡 ---
         is_strong_momentum = False
-        if all_conditions_met and len(df[df.index >= surge_date]) >= 2:
+        if all_conditions_met and surge_date in df.index and len(df[df.index >= surge_date]) >= 2:
             # D일과 D+1일 데이터 추출
             day_0_close = df.loc[surge_date]['종가']
             day_1_df = df[df.index > surge_date]
@@ -97,15 +111,14 @@ class StockSelector:
                     if day_1_return >= 0.10:
                         is_strong_momentum = True
 
-        print(stock.get('name'))
-        print('조건1: 상승일 기준 10일 전까지 고가 20% 넘지 않은은 이력 여부 체크:',result_high_price)
-        print('조건2: 상승일 고가 - 매수일 현재가 = -7.5% 체크:',result_decline)
-        # print('조건3: 상승일 거래량 대비 다음날 거래량 20% 이상 체크:',result_volume)
-        print('조건4: 상장일 이후 1년 체크:',result_lstg)
-        print('조건5: 과열 종목 제외 체크:',result_warning)
+        log_messages = []
+        log_messages.append(stock.get('name'))
+        log_messages.append(f"조건1: 상승일 기준 10일 전까지 고가 20% 넘지 않은은 이력 여부 체크: {result_high_price}")
+        log_messages.append(f"조건2: 상승일 고가 - 매수일 현재가 = -7.5% 체크: {result_decline}")
+        log_messages.append(f"조건4: 상장일 이후 1년 체크: {result_lstg}")
+        log_messages.append(f"조건5: 과열 종목 제외 체크: {result_warning}")
 
-
-        return all_conditions_met, is_strong_momentum
+        return all_conditions_met, is_strong_momentum, log_messages
 
     def check_listing_date(self, ticker):
         """
@@ -139,7 +152,11 @@ class StockSelector:
             return False
 
 if __name__ == "__main__":
-    # 특정 날짜 이후 모든 급등주 선별 실행
-    start_date = '20250701' # 원하는 시작 날짜를 입력하세요.
+    import argparse
+    parser = argparse.ArgumentParser(description='지정된 기간의 급등주를 선별하여 저장합니다.')
+    parser.add_argument('start_date', type=str, help='시작 날짜 (YYYYMMDD 형식)')
+    parser.add_argument('end_date', type=str, help='종료 날짜 (YYYYMMDD 형식)')
+    args = parser.parse_args()
+
     selector = StockSelector()
-    selector.select_and_save_all_stocks(start_date)
+    selector.select_and_save_all_stocks(args.start_date, args.end_date)

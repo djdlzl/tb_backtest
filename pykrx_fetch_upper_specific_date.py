@@ -61,7 +61,6 @@ def find_daily_upper_stocks(start_date_str, end_date_str):
             df['등락률'] = ((df['종가'] - df['전일종가']) / df['전일종가']) * 100
 
             upper_stocks = df[df['등락률'] >= 17]
-
             if not upper_stocks.empty:
                 found_any = True
                 for ticker, row in upper_stocks.iterrows():
@@ -91,6 +90,8 @@ def find_daily_upper_stocks(start_date_str, end_date_str):
 
 
 if __name__ == "__main__":
+    import argparse
+
     # 로깅 설정
     logging.basicConfig(
         level=logging.INFO,
@@ -100,12 +101,10 @@ if __name__ == "__main__":
             logging.FileHandler('upper_stocks.log')
         ]
     )
-    
-    # 오늘 날짜와 일주일 전 날짜를 기본값으로 설정
-    today = datetime.now()
-    one_week_ago = today - timedelta(days=7)
-    
-    start_date_default = "20250101"
-    end_date_default = "20250709"
 
-    find_daily_upper_stocks(start_date_default, end_date_default)
+    parser = argparse.ArgumentParser(description='지정된 기간의 급등주(17% 이상 상승)를 찾아 DB에 저장합니다.')
+    parser.add_argument('start_date', type=str, help='시작 날짜 (YYYYMMDD 형식)')
+    parser.add_argument('end_date', type=str, help='종료 날짜 (YYYYMMDD 형식)')
+    args = parser.parse_args()
+
+    find_daily_upper_stocks(args.start_date, args.end_date)

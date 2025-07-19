@@ -30,3 +30,27 @@
 2025-07-14 14:09:53,004 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: 1264 (22003): Out of range value for column 'upper_rate' at row 14
 2025-07-14 14:10:39,335 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: 1264 (22003): Out of range value for column 'upper_rate' at row 9
 2025-07-14 14:11:58,438 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: 1264 (22003): Out of range value for column 'upper_rate' at row 9
+2025-07-15 11:56:54,134 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: Out of range value for column 'upper_rate' at row 14
+2025-07-15 11:57:27,709 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: Out of range value for column 'upper_rate' at row 9
+2025-07-15 11:58:23,516 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: Out of range value for column 'upper_rate' at row 9
+2025-07-15 13:31:47,396 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: Out of range value for column 'upper_rate' at row 14
+2025-07-15 13:32:20,415 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: Out of range value for column 'upper_rate' at row 9
+2025-07-15 13:33:15,905 - ERROR - pykrx_upper_stocks 저장 중 오류 발생: Out of range value for column 'upper_rate' at row 9
+2025-07-19 08:58:34,396 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:36,230 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:38,073 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:39,911 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:41,753 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:43,571 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:45,445 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:47,300 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:49,113 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:50,956 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:52,820 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:54,626 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:56,468 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:58:58,277 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:59:00,094 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:59:01,898 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:59:03,711 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
+2025-07-19 08:59:05,530 - ERROR - pykrx_upper_stocks 테이블에 데이터 저장 중 오류 발생: Unknown column 'trade_condition' in 'INSERT INTO'
