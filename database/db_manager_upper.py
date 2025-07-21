@@ -247,7 +247,7 @@ class DatabaseManager:
         """지정된 거래 세션 ID의 모든 분봉 데이터를 조회합니다."""
         try:
             self.cursor.execute('''
-                SELECT `datetime`, price
+                SELECT ticker, name, `datetime`, price
                 FROM minute_prices
                 WHERE trade_session_id = %s
                 ORDER BY `datetime` ASC
