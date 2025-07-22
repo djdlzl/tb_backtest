@@ -97,7 +97,7 @@ HTML_TEMPLATE = '''
         {% if result %}
         <h2>백테스트 결과</h2>
         
-        {% if result.get('total_sessions') is not none %}
+        {% if result is mapping and 'total_sessions' in result %}
         <!-- 전체 세션 백테스트 결과 -->
         <div class="stats-grid">
             <div class="stat-card">

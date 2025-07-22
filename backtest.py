@@ -361,8 +361,8 @@ class BacktestEngine:
             return None
         
         results = []
-        total_investment = 0
-        total_final_value = 0
+        total_investment = investment_amount  # 단일 투자금액으로 설정
+        total_profit_loss = 0                # 전체 손익 합계
         successful_trades = 0
         profitable_trades = 0
         
@@ -380,8 +380,8 @@ class BacktestEngine:
                 
                 if result and result.total_investment > 0:
                     results.append(result)
-                    total_investment += result.total_investment
-                    total_final_value += result.final_value
+                    # 각 세션의 손익을 누적
+                    total_profit_loss += result.profit_loss
                     successful_trades += 1
                     
                     if result.profit_loss > 0:
@@ -405,7 +405,8 @@ class BacktestEngine:
         max_drawdowns = [r.max_drawdown for r in results]
         trade_durations = [r.trade_duration_days for r in results]
         
-        total_profit_loss = total_final_value - total_investment
+        # 전체 세션 결과 계산 (각 세션 손익의 합계 기준)
+        total_final_value = total_investment + total_profit_loss
         total_profit_rate = (total_profit_loss / total_investment * 100) if total_investment > 0 else 0
         win_rate = (profitable_trades / successful_trades * 100) if successful_trades > 0 else 0
         
